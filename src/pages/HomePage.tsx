@@ -131,7 +131,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <p
             style={{
               fontSize: '1.1rem',
-              color: '#e2dad5',
+              color: 'rgba(255, 255, 255, 0.8)',
               maxWidth: '680px',
               margin: '0 auto 36px',
               lineHeight: 1.7,
