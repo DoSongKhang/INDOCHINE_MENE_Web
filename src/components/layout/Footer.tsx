@@ -5,9 +5,9 @@ export const Footer: React.FC = () => {
   return (
     <footer
       style={{
-        backgroundColor: '#090708',
-        borderTop: '1px solid #2e2629',
-        color: '#a39c97',
+        backgroundColor: '#050505',
+        borderTop: '1px solid #222222',
+        color: '#999999',
         marginTop: 'auto',
         fontSize: '0.9rem',
       }}
@@ -15,8 +15,8 @@ export const Footer: React.FC = () => {
       {/* VIP Newsletter Bar */}
       <div
         style={{
-          backgroundColor: '#171315',
-          borderBottom: '1px solid #2e2629',
+          backgroundColor: '#121212',
+          borderBottom: '1px solid #222222',
           padding: '40px 24px',
         }}
       >
@@ -32,11 +32,11 @@ export const Footer: React.FC = () => {
           }}
         >
           <div>
-            <h3 style={{ fontSize: '1.4rem', color: '#f5e6ab', marginBottom: '6px' }}>
-              ĐĂNG KÝ NHẬN ĐẶC QUYỀN VIP KHỞI NIÊN
+            <h3 style={{ fontSize: '1.4rem', color: '#ffffff', marginBottom: '6px', fontFamily: 'var(--font-serif)', letterSpacing: '1px' }}>
+              ĐĂNG KÝ NHẬN ĐẶC QUYỀN VIP INDOCHINE MÈNE
             </h3>
-            <p style={{ color: '#a39c97', fontSize: '0.9rem' }}>
-              Nhận thông báo bộ sưu tập Giới Hạn Tết 2026 và thư mời tham dự các buổi VIP Wine Tasting riêng tư.
+            <p style={{ color: '#999999', fontSize: '0.9rem' }}>
+              Nhận thông báo bộ sưu tập Giới Hạn và thư mời tham dự các buổi VIP Wine Tasting riêng tư.
             </p>
           </div>
           <div style={{ display: 'flex', gap: '12px', minWidth: '320px', flex: '1 1 350px', maxWidth: '500px' }}>
@@ -45,11 +45,11 @@ export const Footer: React.FC = () => {
               placeholder="Nhập địa chỉ email của bạn..."
               style={{
                 flex: 1,
-                backgroundColor: '#0d0b0c',
-                border: '1px solid #332b2e',
-                borderRadius: '8px',
+                backgroundColor: '#080808',
+                border: '1px solid #333333',
+                borderRadius: '6px',
                 padding: '12px 16px',
-                color: '#f5f3f0',
+                color: '#ffffff',
                 outline: 'none',
               }}
             />
@@ -71,40 +71,40 @@ export const Footer: React.FC = () => {
         >
           {/* Brand Info */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
               <span
                 style={{
-                  width: '36px',
-                  height: '36px',
+                  width: '38px',
+                  height: '38px',
                   borderRadius: '50%',
-                  border: '1px solid #d4af37',
+                  border: '1px solid #ffffff',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#d4af37',
+                  color: '#ffffff',
                   fontWeight: 'bold',
                   fontFamily: 'var(--font-serif)',
                 }}
               >
-                KN
+                IM
               </span>
-              <h2 style={{ fontSize: '1.4rem', color: '#f5e6ab', letterSpacing: '1px' }}>KHỞI NIÊN</h2>
+              <h2 style={{ fontSize: '1.5rem', color: '#ffffff', letterSpacing: '2px', fontFamily: 'var(--font-serif)' }}>INDOCHINE MÈNE</h2>
             </div>
-            <p style={{ lineHeight: 1.7, marginBottom: '20px', color: '#a39c97' }}>
-              Thương hiệu Prosecco & Rượu vang cao cấp số 1 Việt Nam. Mang âm hưởng di sản Á Âu hội tụ vào từng giọt vang sủi bọt thượng hạng.
+            <p style={{ lineHeight: 1.7, marginBottom: '20px', color: '#999999' }}>
+              Thương hiệu Prosecco &amp; Rượu vang cao cấp Pháp - Ý. Mang âm hưởng nghệ thuật Indochine cổ điển kết hợp tinh hoa bọt sủi thượng hạng.
             </p>
-            <div style={{ color: '#d4af37', fontSize: '0.85rem' }}>
+            <div style={{ color: '#ffffff', fontSize: '0.85rem' }}>
               <p>Hotline Đặt Hàng: <strong>1900 888 999</strong></p>
-              <p>Email: <strong>vip@khoinien.vn</strong></p>
+              <p>Email: <strong>vip@indochinemene.vn</strong></p>
             </div>
           </div>
 
           {/* Showroom Systems */}
           <div>
-            <h4 style={{ color: '#d4af37', fontSize: '1.1rem', marginBottom: '20px', textTransform: 'uppercase' }}>
+            <h4 style={{ color: '#ffffff', fontSize: '1.05rem', marginBottom: '20px', textTransform: 'uppercase', letterSpacing: '1px' }}>
               HỆ THỐNG SHOWROOM
             </h4>
-            <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', color: '#999999' }}>
               <li>📍 <strong>Hà Nội:</strong> 88 Lý Thường Kiệt, Q. Hoàn Kiếm</li>
               <li>📍 <strong>TP. Hồ Chí Minh:</strong> 168 Nguyễn Huệ, Quận 1</li>
               <li>📍 <strong>Đà Nẵng:</strong> 45 Bạch Đằng, Q. Hải Châu</li>
@@ -114,34 +114,34 @@ export const Footer: React.FC = () => {
 
           {/* Customer Support */}
           <div>
-            <h4 style={{ color: '#d4af37', fontSize: '1.1rem', marginBottom: '20px', textTransform: 'uppercase' }}>
+            <h4 style={{ color: '#ffffff', fontSize: '1.05rem', marginBottom: '20px', textTransform: 'uppercase', letterSpacing: '1px' }}>
               HỖ TRỢ KHÁCH HÀNG
             </h4>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              <li><a href="#" style={{ color: '#a39c97' }}>• Chính Sách Bảo Quản & Vận Chuyển Hỏa Tốc</a></li>
-              <li><a href="#" style={{ color: '#a39c97' }}>• Hướng Dẫn Thưởng Thức Prosecco Chuẩn Vang Ý</a></li>
-              <li><a href="#" style={{ color: '#a39c97' }}>• Dịch Vụ Khắc Tên Logo Doanh Nghiệp Lên Chai</a></li>
-              <li><a href="#" style={{ color: '#a39c97' }}>• Chính Sách Đổi Trả & Hóa Đơn VAT</a></li>
+              <li><a href="#" style={{ color: '#999999' }}>• Chính Sách Bảo Quản &amp; Vận Chuyển Hỏa Tốc</a></li>
+              <li><a href="#" style={{ color: '#999999' }}>• Hướng Dẫn Thưởng Thức Prosecco Chuẩn Vang Pháp Ý</a></li>
+              <li><a href="#" style={{ color: '#999999' }}>• Dịch Vụ Khắc Tên Logo Doanh Nghiệp Lên Chai</a></li>
+              <li><a href="#" style={{ color: '#999999' }}>• Chính Sách Đổi Trả &amp; Hóa Đơn VAT</a></li>
             </ul>
           </div>
 
           {/* Compliance & Responsible Drinking */}
           <div>
-            <h4 style={{ color: '#d4af37', fontSize: '1.1rem', marginBottom: '20px', textTransform: 'uppercase' }}>
+            <h4 style={{ color: '#ffffff', fontSize: '1.05rem', marginBottom: '20px', textTransform: 'uppercase', letterSpacing: '1px' }}>
               THƯỞNG THỨC CÓ TRÁCH NHIỆM
             </h4>
             <div
               style={{
-                backgroundColor: 'rgba(114, 47, 55, 0.2)',
-                border: '1px solid rgba(212, 175, 55, 0.3)',
-                borderRadius: '10px',
+                backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                borderRadius: '8px',
                 padding: '16px',
                 fontSize: '0.85rem',
                 lineHeight: 1.6,
-                color: '#f5f3f0',
+                color: '#cccccc',
               }}
             >
-              <p style={{ color: '#d4af37', fontWeight: 'bold', marginBottom: '6px' }}>🔞 Thông Báo Tuân Thủ Pháp Luật</p>
+              <p style={{ color: '#ffffff', fontWeight: 'bold', marginBottom: '6px' }}>🔞 Thông Báo Tuân Thủ Pháp Luật</p>
               Sản phẩm đồ uống có cồn chỉ dành cho người trên 18 tuổi. Không bán hàng cho người chưa đủ tuổi vị thành niên. Không điều khiển phương tiện giao thông sau khi uống rượu bia.
             </div>
           </div>
@@ -150,7 +150,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div
           style={{
-            borderTop: '1px solid #2e2629',
+            borderTop: '1px solid #222222',
             marginTop: '40px',
             paddingTop: '24px',
             display: 'flex',
@@ -159,11 +159,11 @@ export const Footer: React.FC = () => {
             alignItems: 'center',
             gap: '16px',
             fontSize: '0.8rem',
-            color: '#6e6b68',
+            color: '#666666',
           }}
         >
-          <p>© 2026 KHỞI NIÊN VIỆT NAM. Bản quyền thuộc về Công ty Cổ phần Rượu Vang Khởi Niên.</p>
-          <p>Thiết kế chuẩn Luxury E-commerce E-Shop</p>
+          <p>© 2026 INDOCHINE MÈNE VIỆT NAM. Bản quyền thuộc về Công ty Cổ phần Rượu Vang Indochine Mène.</p>
+          <p>French Vintage High Fashion E-Commerce</p>
         </div>
       </div>
     </footer>
