@@ -10,6 +10,7 @@ import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { CartPage } from './pages/CartPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import AuthPage from './pages/AuthPage';
 
 export function App() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
@@ -56,6 +57,9 @@ export function App() {
     }
     if (pathOnly === '/checkout') {
       return <CheckoutPage onNavigate={navigate} />;
+    }
+    if (pathOnly === '/auth' || pathOnly === '/login') {
+      return <AuthPage onNavigate={navigate} />;
     }
     return <NotFoundPage onNavigate={navigate} />;
   };
