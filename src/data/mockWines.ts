@@ -1,5 +1,5 @@
 import type { WineItem } from '../types/wine';
-
+import anh1 from "../assets/images/wines/anh1.jpg"
 export const MOCK_WINES: WineItem[] = [
   {
     id: 'indochine-mene-heritage-limited',
@@ -11,7 +11,7 @@ export const MOCK_WINES: WineItem[] = [
     originalPrice: 3800000,
     rating: 5.0,
     reviewCount: 48,
-    image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80',
+    image: anh1,
     abv: '11.5% Vol',
     volume: '750ml x 2 + Ly Pha Lê',
     origin: 'DOCG Veneto, Pháp & Ý',
