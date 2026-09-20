@@ -14,10 +14,10 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
 
   const navItems = [
     { label: 'TRANG CHỦ', path: ROUTES.HOME },
-    { label: 'GIFT SET TẾT', path: `${ROUTES.PRODUCTS}?cat=giftset` },
+    { label: 'VỀ CHÚNG TÔi', path: ROUTES.ABOUT },
+    { label: 'GIFT SET', path: `${ROUTES.PRODUCTS}?cat=giftset` },
     { label: 'PROSECCO & BỘ SƯU TẬP', path: ROUTES.PRODUCTS },
-    { label: 'DI SẢN KHỞI NIÊN', path: ROUTES.ABOUT },
-    { label: 'LIÊN HỆ SHOWROOM', path: ROUTES.CONTACT },
+    { label: 'LIÊN HỆ', path: ROUTES.CONTACT },
   ];
 
   const handleNav = (path: string) => {
@@ -32,39 +32,16 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
   return (
     <header style={{ position: 'sticky', top: 0, zIndex: 1000, width: '100%' }}>
       {/* Top Banner Bar */}
-      <div
-        style={{
-          backgroundColor: '#4a151b',
-          borderBottom: '1px solid rgba(212, 175, 55, 0.2)',
-          color: '#f5e6ab',
-          fontSize: '0.8rem',
-          padding: '6px 20px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          letterSpacing: '0.5px',
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <span>📍 Showroom Trưng Bày: Hà Nội | TP. Hồ Chí Minh | Đà Nẵng</span>
-          <span style={{ opacity: 0.6 }}>|</span>
-          <span>🍷 Khám phá Hộp Quà Tết Khởi Niên Limited Edition 2026</span>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-          <a href="tel:1900888999" style={{ color: '#d4af37', fontWeight: 600 }}>
-            📞 Hotline VIP: 1900 888 999
-          </a>
-        </div>
-      </div>
+
 
       {/* Main Glass Header */}
       <div
         style={{
-          backgroundColor: 'rgba(13, 11, 12, 0.92)',
+          backgroundColor: 'rgba(8, 8, 8, 0.95)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
-          borderBottom: '1px solid #2e2629',
-          padding: '12px 24px',
+          borderBottom: '1px solid #222222',
+          padding: '16px 24px',
         }}
       >
         <div
@@ -79,39 +56,40 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
           {/* Logo Brand */}
           <div
             onClick={() => handleNav(ROUTES.HOME)}
-            style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}
+            style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '14px' }}
           >
             <div
               style={{
-                width: '42px',
-                height: '42px',
+                width: '44px',
+                height: '44px',
                 borderRadius: '50%',
-                border: '1.5px solid #d4af37',
+                border: '1.5px solid #ffffff',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(114, 47, 55, 0.3))',
+                background: 'rgba(255, 255, 255, 0.05)',
               }}
             >
-              <span style={{ fontFamily: 'var(--font-serif)', color: '#d4af37', fontWeight: 'bold', fontSize: '1.2rem' }}>
-                KN
+              <span style={{ fontFamily: 'var(--font-serif)', color: '#ffffff', fontWeight: 'bold', fontSize: '1.1rem', letterSpacing: '1px' }}>
+                IM
               </span>
             </div>
             <div>
               <h1
                 style={{
                   fontFamily: 'var(--font-serif)',
-                  fontSize: '1.6rem',
+                  fontSize: '1.7rem',
                   lineHeight: 1,
-                  color: '#f5e6ab',
-                  letterSpacing: '2px',
+                  color: '#ffffff',
+                  letterSpacing: '3px',
                   margin: 0,
+                  fontWeight: 600,
                 }}
               >
-                KHỞI NIÊN
+                INDOCHINE MÈNE
               </h1>
-              <span style={{ fontSize: '0.65rem', color: '#d4af37', letterSpacing: '1.5px', textTransform: 'uppercase' }}>
-                PROSECCO & LUXURY WINE
+              <span style={{ fontSize: '0.62rem', color: '#999999', letterSpacing: '2px', textTransform: 'uppercase', marginTop: '4px', display: 'block' }}>
+                PROSECCO &amp; FINE WINES
               </span>
             </div>
           </div>
@@ -125,14 +103,15 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
                   key={item.path}
                   onClick={() => handleNav(item.path)}
                   style={{
-                    color: isActive ? '#d4af37' : '#f5f3f0',
+                    color: isActive ? '#ffffff' : '#a3a3a3',
                     fontSize: '0.85rem',
-                    fontWeight: isActive ? 700 : 500,
-                    letterSpacing: '1px',
+                    fontWeight: isActive ? 600 : 400,
+                    letterSpacing: '1.5px',
                     cursor: 'pointer',
                     position: 'relative',
                     padding: '8px 0',
                     transition: 'all 0.25s ease',
+                    fontFamily: 'var(--font-sans)',
                   }}
                 >
                   {item.label}
@@ -144,8 +123,8 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
                         left: 0,
                         right: 0,
                         height: '2px',
-                        backgroundColor: '#d4af37',
-                        boxShadow: '0 0 8px #d4af37',
+                        backgroundColor: '#ffffff',
+                        boxShadow: '0 0 8px rgba(255, 255, 255, 0.8)',
                       }}
                     />
                   )}
@@ -164,20 +143,21 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
-                padding: '8px 16px',
+                padding: '8px 18px',
                 borderRadius: '20px',
-                border: '1px solid rgba(212, 175, 55, 0.4)',
-                backgroundColor: 'rgba(212, 175, 55, 0.08)',
-                color: '#d4af37',
+                border: '1px solid rgba(255, 255, 255, 0.4)',
+                backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                color: '#ffffff',
                 fontSize: '0.85rem',
                 fontWeight: 600,
+                letterSpacing: '0.5px',
               }}
             >
               <span>🛒 Giỏ Hàng</span>
               <span
                 style={{
-                  backgroundColor: '#722f37',
-                  color: '#ffffff',
+                  backgroundColor: '#ffffff',
+                  color: '#050505',
                   borderRadius: '50%',
                   width: '20px',
                   height: '20px',
@@ -217,13 +197,13 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               style={{
                 display: 'none',
-                color: '#d4af37',
+                color: '#ffffff',
                 fontSize: '1.6rem',
                 padding: '4px',
               }}
               className="show-mobile-btn"
             >
-              ☰
+              {isMobileMenuOpen ? '✕' : '☰'}
             </button>
           </div>
         </div>
@@ -233,8 +213,8 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
           <div
             style={{
               paddingTop: '16px',
-              paddingBottom: '8px',
-              borderTop: '1px solid #332b2e',
+              paddingBottom: '16px',
+              borderTop: '1px solid #222222',
               marginTop: '12px',
               display: 'flex',
               flexDirection: 'column',
@@ -246,12 +226,14 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
                 key={item.path}
                 onClick={() => handleNav(item.path)}
                 style={{
-                  color: currentPath === item.path ? '#d4af37' : '#f5f3f0',
+                  color: currentPath === item.path ? '#ffffff' : '#a3a3a3',
                   fontSize: '0.95rem',
-                  fontWeight: 600,
+                  fontWeight: currentPath === item.path ? 600 : 400,
+                  letterSpacing: '1.5px',
                   padding: '8px 12px',
                   borderRadius: '6px',
-                  backgroundColor: currentPath === item.path ? 'rgba(212, 175, 55, 0.1)' : 'transparent',
+                  backgroundColor: currentPath === item.path ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
+                  cursor: 'pointer',
                 }}
               >
                 {item.label}

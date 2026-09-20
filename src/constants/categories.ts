@@ -7,10 +7,10 @@ export interface CategoryInfo {
 }
 
 export const CATEGORIES: CategoryInfo[] = [
-  { id: 'all', name: 'Tất Cả Sản Phẩm', description: 'Toàn bộ bộ sưu tập Prosecco & Rượu vang Khởi Niên' },
-  { id: 'prosecco', name: 'Prosecco Superiore', description: 'Dòng Prosecco Ý đẳng cấp nhập khẩu với bọt sủi tinh tế' },
-  { id: 'giftset', name: 'Bộ Sưu Tập Gift Set', description: 'Hộp quà biếu Tết & đối tác cao cấp đính kèm ly pha lê' },
+  { id: 'all', name: 'Tất Cả Sản Phẩm', description: 'Toàn bộ bộ sưu tập Prosecco & Rượu vang Indochine Mène' },
+  { id: 'prosecco', name: 'Prosecco Superiore', description: 'Dòng Prosecco Pháp - Ý đẳng cấp với bọt sủi tinh tế' },
+  { id: 'giftset', name: 'Bộ Sưu Tập Gift Set', description: 'Hộp quà biếu & đối tác cao cấp đính kèm ly pha lê' },
   { id: 'sparkling', name: 'Sparkling Gold', description: 'Dòng vang sủi dát vàng 23K sang trọng cho đại tiệc' },
   { id: 'rose', name: 'Rosé Sparkling', description: 'Vang sủi hồng quyến rũ mang hương vị trái cây mọng đỏ' },
-  { id: 'red', name: 'Khởi Niên Red Reserve', description: 'Rượu vang đỏ cao cấp ủ thùng gỗ sồi lâu năm' },
+  { id: 'red', name: 'Indochine Mène Red Reserve', description: 'Rượu vang đỏ cao cấp ủ thùng gỗ sồi Pháp lâu năm' },
 ];

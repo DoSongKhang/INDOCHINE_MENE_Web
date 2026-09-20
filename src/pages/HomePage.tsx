@@ -22,10 +22,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
 
   const heroSlides = [
     {
-      title: 'KHỞI NIÊN CULTURAL HERITAGE',
-      subtitle: 'NƠI TINH HOA Á ÂU HỘI TỤ • BẢN GIỚI HẠN TẾT 2026',
+      title: 'INDOCHINE MÈNE HERITAGE',
+      subtitle: 'NƠI TINH HOA Á ÂU HỘI TỤ • BẢN GIỚI HẠN VINTAGE',
       bgImage: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1600&q=80',
-      description: 'Sự kết hợp hoàn hảo giữa kỹ nghệ Prosecco Ý thượng hạng và họa tiết hoa mẫu đơn, cánh én chao liệng ngày Tết Việt.',
+      description: 'Sự kết hợp hoàn hảo giữa kỹ nghệ bọt sủi tinh tế và ngôn ngữ thiết kế Indochine Pháp cổ điển kiêu sa.',
     },
     {
       title: 'PROSECCO SUPERIORE DOCG',
@@ -174,25 +174,25 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '48px', alignItems: 'center' }}>
             {/* Left Story Text */}
             <div>
-              <span style={{ color: '#d4af37', fontSize: '0.85rem', letterSpacing: '2px', fontWeight: 'bold' }}>
-                CULTURAL HERITAGE
+              <span style={{ color: '#ffffff', fontSize: '0.85rem', letterSpacing: '2px', fontWeight: 'bold' }}>
+                INDOCHINE HERITAGE
               </span>
-              <h2 style={{ fontSize: '2.4rem', color: '#f5e6ab', marginTop: '8px', marginBottom: '20px', lineHeight: 1.2 }}>
+              <h2 style={{ fontSize: '2.4rem', color: '#ffffff', marginTop: '8px', marginBottom: '20px', lineHeight: 1.2, fontFamily: 'var(--font-serif)' }}>
                 NƠI TINH HOA Á ÂU HỘI TỤ
               </h2>
-              <p style={{ color: '#a39c97', lineHeight: 1.8, marginBottom: '24px', fontSize: '1rem' }}>
-                Mang âm hưởng mùa xuân Á Âu vào món quà Tết, <strong>Cultural Heritage của Khởi Niên</strong> là bản giao hưởng tuyệt vời của sắc màu và hương vị. Hình ảnh mùa xuân châu Âu được tô điểm cùng họa tiết hoa mẫu đơn, cánh én chao liệng và hoa đào Tết Việt Nam – biểu tượng của may mắn, thịnh vượng và bình an năm mới.
+              <p style={{ color: '#999999', lineHeight: 1.8, marginBottom: '24px', fontSize: '1rem' }}>
+                Mang âm hưởng thiết kế Indochine Pháp cổ điển vào từng tuyệt phẩm, <strong>Heritage của Indochine Mène</strong> là bản giao hưởng tuyệt vời của sắc màu và hương vị bọt sủi.
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '32px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#f5f3f0' }}>
-                  <span style={{ color: '#d4af37', fontSize: '1.2rem' }}>✦</span> 2 Chai Prosecco Superiore DOCG mạ vàng 24K
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#ffffff' }}>
+                  <span style={{ color: '#ffffff', fontSize: '1.2rem' }}>✦</span> 2 Chai Prosecco Superiore DOCG thượng hạng
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#f5f3f0' }}>
-                  <span style={{ color: '#d4af37', fontSize: '1.2rem' }}>✦</span> 2 Ly pha lê chân cao chuyên dụng thưởng thức bọt sủi
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#ffffff' }}>
+                  <span style={{ color: '#ffffff', fontSize: '1.2rem' }}>✦</span> 2 Ly pha lê chân cao chuyên dụng thưởng thức bọt sủi
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#f5f3f0' }}>
-                  <span style={{ color: '#d4af37', fontSize: '1.2rem' }}>✦</span> Hộp quà da sơn mài cao cấp ép kim logo Khởi Niên
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#ffffff' }}>
+                  <span style={{ color: '#ffffff', fontSize: '1.2rem' }}>✦</span> Hộp quà da sơn mài cao cấp ép kim logo Indochine Mène
                 </div>
               </div>
 
@@ -269,7 +269,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               size="lg"
               onClick={() => onNavigate && onNavigate('/products')}
             >
-              XEM TOÀN BỘ BỘ SƯU TẬP KHỞI NIÊN →
+              XEM TOÀN BỘ BỘ SƯU TẬP INDOCHINE MÈNE →
             </Button>
           </div>
         </div>

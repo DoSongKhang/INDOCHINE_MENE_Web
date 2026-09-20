@@ -22,17 +22,17 @@ export const ProductsPage: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ backgroundColor: '#0d0b0c', minHeight: '80vh', padding: '60px 24px' }}>
+    <div style={{ backgroundColor: '#050505', minHeight: '80vh', padding: '60px 24px' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         {/* Page Header Title */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <span style={{ color: '#d4af37', fontSize: '0.85rem', letterSpacing: '2px', fontWeight: 'bold' }}>
-            KHỞI NIÊN PROSECCO & WINE SELECTION
+          <span style={{ color: '#ffffff', fontSize: '0.85rem', letterSpacing: '2px', fontWeight: 'bold' }}>
+            INDOCHINE MÈNE PROSECCO &amp; WINE SELECTION
           </span>
-          <h1 style={{ fontSize: '2.8rem', color: '#f5e6ab', marginTop: '6px' }}>
-            BỘ SƯU TẬP RƯỢU VANG & PROSECCO CAO CẤP
+          <h1 style={{ fontSize: '2.8rem', color: '#ffffff', marginTop: '6px', fontFamily: 'var(--font-serif)' }}>
+            BỘ SƯU TẬP RƯỢU VANG &amp; PROSECCO CAO CẤP
           </h1>
-          <p style={{ color: '#a39c97', maxWidth: '600px', margin: '12px auto 0', fontSize: '0.95rem' }}>
+          <p style={{ color: '#999999', maxWidth: '600px', margin: '12px auto 0', fontSize: '0.95rem' }}>
             Khám phá những dòng vang sủi bọt Prosecco Superiore DOCG, Sparkling dát vàng 23K và các bộ Hộp Quà Biếu Tết sang trọng bậc nhất.
           </p>
         </div>

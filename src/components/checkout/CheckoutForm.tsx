@@ -188,13 +188,13 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
             style={{ marginTop: '3px' }}
           />
           <span>
-            Tôi xác nhận tôi từ <strong>18 tuổi trở lên</strong> và đồng ý với điều khoản thưởng thức có trách nhiệm của Khởi Niên Việt Nam.
+            Tôi xác nhận tôi từ <strong>18 tuổi trở lên</strong> và đồng ý với điều khoản thưởng thức có trách nhiệm của Indochine Mène Việt Nam.
           </span>
         </label>
       </div>
 
       <Button variant="gold" size="lg" fullWidth type="submit" disabled={isSubmitting || !formData.isAgeConfirmed}>
-        {isSubmitting ? 'ĐANG XỬ LÝ ĐƠN HÀNG...' : 'XÁC NHẬN ĐẶT HÀNG KHỞI NIÊN'}
+        {isSubmitting ? 'ĐANG XỬ LÝ ĐƠN HÀNG...' : 'XÁC NHẬN ĐẶT HÀNG INDOCHINE MÈNE'}
       </Button>
     </form>
   );

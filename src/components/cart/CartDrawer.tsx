@@ -54,11 +54,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onCheckoutClick }) => {
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <span style={{ fontSize: '1.2rem' }}>🛒</span>
-            <h3 style={{ fontSize: '1.2rem', color: '#f5e6ab', margin: 0 }}>
-              GIỎ HÀNG KHỞI NIÊN ({totalItems})
+            <h3 style={{ fontSize: '1.2rem', color: '#ffffff', margin: 0, fontFamily: 'var(--font-serif)' }}>
+              GIỎ HÀNG INDOCHINE MÈNE ({totalItems})
             </h3>
           </div>
-          <button onClick={closeCart} style={{ color: '#a39c97', fontSize: '1.4rem' }}>
+          <button onClick={closeCart} style={{ color: '#999999', fontSize: '1.4rem' }}>
             ✕
           </button>
         </div>
@@ -66,13 +66,13 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onCheckoutClick }) => {
         {/* Drawer Items List */}
         <div style={{ flex: 1, overflowY: 'auto', padding: '0 24px' }}>
           {cart.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '60px 20px', color: '#a39c97' }}>
+            <div style={{ textAlign: 'center', padding: '60px 20px', color: '#999999' }}>
               <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🍾</div>
-              <p style={{ fontSize: '1rem', color: '#f5e6ab', marginBottom: '8px' }}>
+              <p style={{ fontSize: '1rem', color: '#ffffff', marginBottom: '8px', fontFamily: 'var(--font-serif)' }}>
                 Giỏ hàng của bạn chưa có sản phẩm
               </p>
               <p style={{ fontSize: '0.85rem' }}>
-                Hãy lựa chọn những dòng Prosecco & Gift Set Khởi Niên tuyệt hảo nhất.
+                Hãy lựa chọn những dòng Prosecco &amp; Gift Set Indochine Mène tuyệt hảo nhất.
               </p>
             </div>
           ) : (
@@ -83,7 +83,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onCheckoutClick }) => {
               <div style={{ padding: '16px 0', textAlign: 'right' }}>
                 <button
                   onClick={clearCart}
-                  style={{ color: '#e74c3c', fontSize: '0.8rem', textDecoration: 'underline' }}
+                  style={{ color: '#ff4d4d', fontSize: '0.8rem', textDecoration: 'underline' }}
                 >
                   Xóa tất cả sản phẩm
                 </button>
@@ -97,18 +97,18 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onCheckoutClick }) => {
           <div
             style={{
               padding: '24px',
-              borderTop: '1px solid #332b2e',
-              backgroundColor: '#0d0b0c',
+              borderTop: '1px solid #222222',
+              backgroundColor: '#080808',
             }}
           >
             <div
               style={{
-                backgroundColor: 'rgba(212, 175, 55, 0.08)',
-                border: '1px solid rgba(212, 175, 55, 0.2)',
+                backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
                 borderRadius: '8px',
                 padding: '10px 14px',
                 fontSize: '0.8rem',
-                color: '#d4af37',
+                color: '#ffffff',
                 marginBottom: '16px',
                 display: 'flex',
                 alignItems: 'center',
@@ -116,7 +116,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onCheckoutClick }) => {
               }}
             >
               <span>🎁</span>
-              <span>Miễn phí túi quà biếu Tết cao cấp Khởi Niên cho mọi đơn hàng.</span>
+              <span>Miễn phí túi quà biếu cao cấp Indochine Mène cho mọi đơn hàng.</span>
             </div>
 
             <div

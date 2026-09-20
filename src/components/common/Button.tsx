@@ -36,29 +36,30 @@ export const Button: React.FC<ButtonProps> = ({
     switch (variant) {
       case 'gold':
         return {
-          background: 'linear-gradient(135deg, #f5e6ab 0%, #d4af37 50%, #b89628 100%)',
-          color: '#0d0b0c',
-          boxShadow: '0 4px 20px rgba(212, 175, 55, 0.25)',
-          border: 'none',
+          background: '#ffffff',
+          color: '#050505',
+          boxShadow: '0 4px 20px rgba(255, 255, 255, 0.15)',
+          border: '1px solid #ffffff',
+          fontWeight: 700,
         };
       case 'wine':
         return {
-          background: 'linear-gradient(135deg, #94424d 0%, #722f37 50%, #4a151b 100%)',
+          background: '#1a1a1a',
           color: '#ffffff',
-          boxShadow: '0 4px 20px rgba(114, 47, 55, 0.3)',
-          border: '1px solid rgba(212, 175, 55, 0.2)',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
         };
       case 'outline':
         return {
           background: 'transparent',
-          color: '#d4af37',
-          border: '1px solid #d4af37',
+          color: '#ffffff',
+          border: '1px solid #ffffff',
           boxShadow: 'none',
         };
       case 'ghost':
         return {
           background: 'transparent',
-          color: '#f5f3f0',
+          color: '#e5e5e5',
           border: 'none',
           boxShadow: 'none',
         };
@@ -68,7 +69,7 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <button
       style={{ ...baseStyles, ...getVariantStyles() }}
-      className={`khoi-nien-btn ${className}`}
+      className={`indochine-btn ${className}`}
       disabled={disabled}
       {...props}
     >
