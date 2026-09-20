@@ -7,6 +7,7 @@ import { ProductDetails } from '../components/product/ProductDetails';
 import { Button } from '../components/common/Button';
 import { formatCurrency } from '../utils/formatCurrency';
 import { useCart } from '../hooks/useCart';
+import video from "../assets/images/wines/video1.mp4"
 
 interface HomePageProps {
   onNavigate?: (path: string) => void;
@@ -24,20 +25,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
     {
       title: 'INDOCHINE MÈNE HERITAGE',
       subtitle: 'NƠI TINH HOA Á ÂU HỘI TỤ • BẢN GIỚI HẠN VINTAGE',
-      bgImage: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1600&q=80',
+      type: 'video', // Đánh dấu đây là video
+      src: video,    // Đường dẫn file video đã import
       description: 'Sự kết hợp hoàn hảo giữa kỹ nghệ bọt sủi tinh tế và ngôn ngữ thiết kế Indochine Pháp cổ điển kiêu sa.',
-    },
-    {
-      title: 'PROSECCO SUPERIORE DOCG',
-      subtitle: 'BỌT SỦI TĂM LI TI TƯƠI MÁT SỐ 1 VIỆT NAM',
-      bgImage: 'https://images.unsplash.com/photo-1558001373-7b9fcc98f0b7?auto=format&fit=crop&w=1600&q=80',
-      description: 'Trải nghiệm hương vị tinh khiết đỉnh cao từ những chùm nho Glera được thu hoạch thủ công vùng Valdobbiadene, Ý.',
-    },
-    {
-      title: 'SPARKLING GOLD 23K LUXURY',
-      subtitle: 'TÁCH BIỆT & KHỞI ĐẦU SỰ THỊNH VƯỢNG',
-      bgImage: 'https://images.unsplash.com/photo-1569919659476-f0852f6834b7?auto=format&fit=crop&w=1600&q=80',
-      description: 'Vang sủi dát vàng 23K lấp lánh - Lựa chọn kiêu sa tôn vinh chiến thắng trong những đại tiệc trọng đại.',
     },
   ];
 
@@ -56,17 +46,35 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         }}
       >
         {/* Background Image Container */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: `url(${heroSlides[heroSlide].bgImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            filter: 'brightness(0.35)',
-            transition: 'background-image 0.8s ease-in-out',
-          }}
-        />
+        {heroSlides[heroSlide].type === 'video' ? (
+          <video
+            src={heroSlides[heroSlide].src}
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              filter: 'brightness(1.1)',
+            }}
+          />
+        ) : (
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              backgroundImage: `url(${heroSlides[heroSlide].src})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              filter: 'brightness(1.1)',
+              transition: 'background-image 0.8s ease-in-out',
+            }}
+          />
+        )}
 
         {/* Ambient Overlay Gradients */}
         <div
@@ -132,39 +140,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             {heroSlides[heroSlide].description}
           </p>
 
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Button
-              variant="gold"
-              size="lg"
-              onClick={() => onNavigate && onNavigate('/products')}
-            >
-              KHÁM PHÁ BỘ SƯU TẬP
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => onNavigate && onNavigate('/contact')}
-            >
-              BÁO GIÁ QUÀ TẾT DOANH NGHIỆP
-            </Button>
-          </div>
 
           {/* Slider Dots */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '48px' }}>
-            {heroSlides.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setHeroSlide(idx)}
-                style={{
-                  width: idx === heroSlide ? '32px' : '10px',
-                  height: '10px',
-                  borderRadius: '5px',
-                  backgroundColor: idx === heroSlide ? '#d4af37' : 'rgba(255,255,255,0.3)',
-                  transition: 'all 0.3s ease',
-                }}
-              />
-            ))}
-          </div>
         </div>
       </section>
 
@@ -178,24 +155,11 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 INDOCHINE HERITAGE
               </span>
               <h2 style={{ fontSize: '2.4rem', color: '#ffffff', marginTop: '8px', marginBottom: '20px', lineHeight: 1.2, fontFamily: 'var(--font-serif)' }}>
-                NƠI TINH HOA Á ÂU HỘI TỤ
+                HERITAGE GIFT – HỒN VIỆT
               </h2>
               <p style={{ color: '#999999', lineHeight: 1.8, marginBottom: '24px', fontSize: '1rem' }}>
-                Mang âm hưởng thiết kế Indochine Pháp cổ điển vào từng tuyệt phẩm, <strong>Heritage của Indochine Mène</strong> là bản giao hưởng tuyệt vời của sắc màu và hương vị bọt sủi.
+                Hồn Việt là bộ quà tặng cao cấp của <strong>INDOCHINE MÈNE,</strong> được thiết kế dành cho doanh nghiệp, đối tác, khách hàng VIP và những dịp tri ân đặc biệt. Bộ quà kết hợp 01 bình rượu gốm Heritage 500ml, 02 chén gốm thủ công, hộp quà phong cách Indochine, thiệp lời chúc và câu chuyện làng nghề. Doanh nghiệp có thể tùy chọn khắc tên, logo hoặc thông điệp riêng, tạo dấu ấn cho từng món quà. Điểm đặc biệt của combo là sự kết nối giữa men rượu và men gốm, giữa làng nghề truyền thống Việt với thiết kế hiện đại, biến món quà thành một sản phẩm vừa có giá trị sử dụng, vừa mang giá trị văn hóa và trưng bày.
               </p>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '32px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#ffffff' }}>
-                  <span style={{ color: '#ffffff', fontSize: '1.2rem' }}>✦</span> 2 Chai Prosecco Superiore DOCG thượng hạng
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#ffffff' }}>
-                  <span style={{ color: '#ffffff', fontSize: '1.2rem' }}>✦</span> 2 Ly pha lê chân cao chuyên dụng thưởng thức bọt sủi
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#ffffff' }}>
-                  <span style={{ color: '#ffffff', fontSize: '1.2rem' }}>✦</span> Hộp quà da sơn mài cao cấp ép kim logo Indochine Mène
-                </div>
-              </div>
-
               <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                 <div>
                   <div style={{ fontSize: '1.8rem', fontWeight: 'bold', color: '#fbb450' }}>
@@ -206,7 +170,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   </div>
                 </div>
                 <Button variant="gold" size="lg" onClick={() => addToCart(heritageWine, 1)}>
-                  ĐẶT HÀNG GIFT SET NGAY
+                  ĐẶT HÀNG NGAY
                 </Button>
               </div>
             </div>
