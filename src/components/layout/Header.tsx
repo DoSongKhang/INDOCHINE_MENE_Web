@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useCart } from '../../hooks/useCart';
 import { ROUTES } from '../../constants/routes';
-
+import anh2 from "../../assets/images/wines/anh2.png"
 interface HeaderProps {
   onSearchClick?: () => void;
   onNavigate?: (path: string) => void;
@@ -16,7 +16,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
     { label: 'TRANG CHỦ', path: ROUTES.HOME },
     { label: 'VỀ CHÚNG TÔi', path: ROUTES.ABOUT },
     { label: 'GIFT SET', path: `${ROUTES.PRODUCTS}?cat=giftset` },
-    { label: 'PROSECCO & BỘ SƯU TẬP', path: ROUTES.PRODUCTS },
+    { label: 'SẢN PHẨM', path: ROUTES.PRODUCTS },
     { label: 'LIÊN HỆ', path: ROUTES.CONTACT },
   ];
 
@@ -50,7 +50,10 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
             margin: '0 auto',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
+            gap: '80px',
+            padding: '0 20px',
+            whiteSpace: 'nowrap',
           }}
         >
           {/* Logo Brand */}
@@ -60,18 +63,17 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
           >
             <div
               style={{
-                width: '44px',
-                height: '44px',
+                width: '90px',
+                height: '90px',
                 borderRadius: '50%',
-                border: '1.5px solid #ffffff',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                background: 'rgba(255, 255, 255, 0.05)',
+                background: 'rgba(8, 8, 8, 0.95)',
               }}
             >
               <span style={{ fontFamily: 'var(--font-serif)', color: '#ffffff', fontWeight: 'bold', fontSize: '1.1rem', letterSpacing: '1px' }}>
-                IM
+                <img src={anh2} alt="logo" />
               </span>
             </div>
             <div>
