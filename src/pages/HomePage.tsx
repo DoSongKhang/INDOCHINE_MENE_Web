@@ -16,7 +16,7 @@ interface HomePageProps {
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   const { addToCart } = useCart();
   const [selectedProduct, setSelectedProduct] = useState<WineItem | null>(null);
-  const [heroSlide, setHeroSlide] = useState(0);
+  const heroSlide = 0;
 
   const heritageWine = MOCK_WINES.find((w) => w.id === 'khoi-nien-heritage-limited') || MOCK_WINES[0];
   const featuredWines = MOCK_WINES.slice(0, 6);
