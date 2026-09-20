@@ -3,6 +3,8 @@ import { useCart } from "../../hooks/useCart";
 import { CartItem } from "./CartItem";
 import { formatCurrency } from "../../utils/formatCurrency";
 import { Button } from "../common/Button";
+import { FaShoppingCart } from "react-icons/fa";
+import { FaGift } from "react-icons/fa";
 
 interface CartDrawerProps {
   onCheckoutClick?: () => void;
@@ -31,7 +33,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onCheckoutClick }) => {
           }}
         >
           <div className="flex items-center gap-2.5">
-            <span className="text-[1.2rem]">🛒</span>
+            <span className="text-[1.1rem] flex items-center text-white">
+              <FaShoppingCart />
+            </span>
             <h3 className="text-[1.2rem] text-white m-0 font-(--font-serif)">
               GIỎ HÀNG INDOCHINE MÈNE ({totalItems})
             </h3>
@@ -44,7 +48,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onCheckoutClick }) => {
         {/* Drawer Items List */}
         <div
           className="flex-1 overflow-y-auto px-6"
-          // style={{ flex: 1, overflowY: "auto", padding: "0 24px" }}
+        // style={{ flex: 1, overflowY: "auto", padding: "0 24px" }}
         >
           {cart.length === 0 ? (
             <div
@@ -94,7 +98,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onCheckoutClick }) => {
                 marginBottom: "16px",
               }}
             >
-              <span>🎁</span>
+              <span className="text-[0.8rem] flex items-center text-white">
+                <FaGift />
+              </span>
               <span>
                 Miễn phí túi quà biếu cao cấp Indochine Mène cho mọi đơn hàng.
               </span>

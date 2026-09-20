@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useCart } from '../../hooks/useCart';
 import { ROUTES } from '../../constants/routes';
+import { FaShoppingCart } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
 
 interface HeaderProps {
   onSearchClick?: () => void;
@@ -95,11 +97,11 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav 
-            className="hide-mobile" 
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
+          <nav
+            className="hide-mobile"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
               gap: 'clamp(14px, 1.8vw, 26px)',
               flexShrink: 0,
               whiteSpace: 'nowrap',
@@ -167,7 +169,10 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
                 flexShrink: 0,
               }}
             >
-              <span>🛒 Giỏ Hàng</span>
+              <span className="text-[1.1rem] flex items-center text-white">
+                <FaShoppingCart />
+              </span>
+              <span>Giỏ Hàng</span>
               <span
                 style={{
                   backgroundColor: '#ffffff',
@@ -205,7 +210,10 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
                 flexShrink: 0,
               }}
             >
-              <span>👤 Tài Khoản</span>
+              <span className="text-[0.9rem] flex items-center text-white">
+                <FaUser />
+              </span>
+              <span>Tài Khoản</span>
             </button>
 
             {/* Mobile Hamburger Menu button */}
