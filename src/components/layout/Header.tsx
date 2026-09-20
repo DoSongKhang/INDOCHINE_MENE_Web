@@ -14,7 +14,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
 
   const navItems = [
     { label: 'TRANG CHỦ', path: ROUTES.HOME },
-    { label: 'VỀ CHÚNG TÔi', path: ROUTES.ABOUT },
+    { label: 'VỀ CHÚNG TÔI', path: ROUTES.ABOUT },
     { label: 'GIFT SET', path: `${ROUTES.PRODUCTS}?cat=giftset` },
     { label: 'PROSECCO & BỘ SƯU TẬP', path: ROUTES.PRODUCTS },
     { label: 'LIÊN HỆ', path: ROUTES.CONTACT },
@@ -31,9 +31,6 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
 
   return (
     <header style={{ position: 'sticky', top: 0, zIndex: 1000, width: '100%' }}>
-      {/* Top Banner Bar */}
-
-
       {/* Main Glass Header */}
       <div
         style={{
@@ -41,36 +38,38 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
           borderBottom: '1px solid #222222',
-          padding: '16px 24px',
+          padding: '12px 24px',
         }}
       >
         <div
           style={{
-            maxWidth: '1280px',
+            maxWidth: '1360px',
             margin: '0 auto',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            gap: '16px',
           }}
         >
           {/* Logo Brand */}
           <div
             onClick={() => handleNav(ROUTES.HOME)}
-            style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '14px' }}
+            style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}
           >
             <div
               style={{
-                width: '44px',
-                height: '44px',
+                width: '38px',
+                height: '38px',
                 borderRadius: '50%',
                 border: '1.5px solid #ffffff',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 background: 'rgba(255, 255, 255, 0.05)',
+                flexShrink: 0,
               }}
             >
-              <span style={{ fontFamily: 'var(--font-serif)', color: '#ffffff', fontWeight: 'bold', fontSize: '1.1rem', letterSpacing: '1px' }}>
+              <span style={{ fontFamily: 'var(--font-serif)', color: '#ffffff', fontWeight: 'bold', fontSize: '0.95rem', letterSpacing: '1px' }}>
                 IM
               </span>
             </div>
@@ -78,24 +77,34 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
               <h1
                 style={{
                   fontFamily: 'var(--font-serif)',
-                  fontSize: '1.7rem',
+                  fontSize: '1.4rem',
                   lineHeight: 1,
                   color: '#ffffff',
-                  letterSpacing: '3px',
+                  letterSpacing: '2px',
                   margin: 0,
                   fontWeight: 600,
+                  whiteSpace: 'nowrap',
                 }}
               >
                 INDOCHINE MÈNE
               </h1>
-              <span style={{ fontSize: '0.62rem', color: '#999999', letterSpacing: '2px', textTransform: 'uppercase', marginTop: '4px', display: 'block' }}>
+              <span style={{ fontSize: '0.58rem', color: '#999999', letterSpacing: '1.5px', textTransform: 'uppercase', marginTop: '2px', display: 'block', whiteSpace: 'nowrap' }}>
                 PROSECCO &amp; FINE WINES
               </span>
             </div>
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hide-mobile" style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+          <nav 
+            className="hide-mobile" 
+            style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: 'clamp(14px, 1.8vw, 26px)',
+              flexShrink: 0,
+              whiteSpace: 'nowrap',
+            }}
+          >
             {navItems.map((item) => {
               const isActive = currentPath === item.path;
               return (
@@ -104,14 +113,17 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
                   onClick={() => handleNav(item.path)}
                   style={{
                     color: isActive ? '#ffffff' : '#a3a3a3',
-                    fontSize: '0.85rem',
+                    fontSize: '0.82rem',
                     fontWeight: isActive ? 600 : 400,
-                    letterSpacing: '1.5px',
+                    letterSpacing: '1px',
                     cursor: 'pointer',
                     position: 'relative',
-                    padding: '8px 0',
+                    padding: '6px 0',
                     transition: 'all 0.25s ease',
                     fontFamily: 'var(--font-sans)',
+                    whiteSpace: 'nowrap',
+                    display: 'inline-flex',
+                    alignItems: 'center',
                   }}
                 >
                   {item.label}
@@ -134,23 +146,25 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
           </nav>
 
           {/* Right Action Icons */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
             {/* Cart Icon */}
             <button
               onClick={openCart}
               style={{
                 position: 'relative',
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                padding: '8px 18px',
+                padding: '6px 15px',
                 borderRadius: '20px',
                 border: '1px solid rgba(255, 255, 255, 0.4)',
                 backgroundColor: 'rgba(255, 255, 255, 0.08)',
                 color: '#ffffff',
-                fontSize: '0.85rem',
+                fontSize: '0.82rem',
                 fontWeight: 600,
                 letterSpacing: '0.5px',
+                whiteSpace: 'nowrap',
+                flexShrink: 0,
               }}
             >
               <span>🛒 Giỏ Hàng</span>
@@ -159,12 +173,12 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
                   backgroundColor: '#ffffff',
                   color: '#050505',
                   borderRadius: '50%',
-                  width: '20px',
-                  height: '20px',
+                  width: '18px',
+                  height: '18px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '0.75rem',
+                  fontSize: '0.7rem',
                   fontWeight: 'bold',
                 }}
               >
@@ -176,17 +190,19 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
             <button
               onClick={() => handleNav(ROUTES.AUTH)}
               style={{
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
-                padding: '8px 14px',
+                padding: '6px 13px',
                 borderRadius: '20px',
                 border: '1px solid rgba(212, 175, 55, 0.4)',
                 backgroundColor: 'rgba(212, 175, 55, 0.08)',
                 color: '#d4af37',
-                fontSize: '0.85rem',
+                fontSize: '0.82rem',
                 fontWeight: 600,
                 cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                flexShrink: 0,
               }}
             >
               <span>👤 Tài Khoản</span>
@@ -244,7 +260,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
       </div>
 
       <style>{`
-        @media (max-width: 900px) {
+        @media (max-width: 1080px) {
           .hide-mobile { display: none !important; }
           .show-mobile-btn { display: block !important; }
         }
