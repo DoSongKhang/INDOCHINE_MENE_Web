@@ -6,4 +6,6 @@ export const ROUTES = {
   CONTACT: '/contact',
   CHECKOUT: '/checkout',
   CART: '/cart',
+  AUTH: '/auth',
+  LOGIN: '/login',
 };

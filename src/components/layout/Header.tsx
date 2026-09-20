@@ -192,6 +192,26 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
               </span>
             </button>
 
+            {/* Auth / Account Button */}
+            <button
+              onClick={() => handleNav(ROUTES.AUTH)}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '8px 14px',
+                borderRadius: '20px',
+                border: '1px solid rgba(212, 175, 55, 0.4)',
+                backgroundColor: 'rgba(212, 175, 55, 0.08)',
+                color: '#d4af37',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                cursor: 'pointer',
+              }}
+            >
+              <span>👤 Tài Khoản</span>
+            </button>
+
             {/* Mobile Hamburger Menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

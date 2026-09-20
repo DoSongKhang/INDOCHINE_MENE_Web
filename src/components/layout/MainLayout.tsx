@@ -11,12 +11,23 @@ interface MainLayoutProps {
 }
 
 export const MainLayout: React.FC<MainLayoutProps> = ({ children, onNavigate, currentPath }) => {
+  const handleProceedToCheckout = () => {
+    if (!onNavigate) return;
+    const isLoggedIn = localStorage.getItem('khoi_nien_is_logged_in') === 'true';
+    if (isLoggedIn) {
+      onNavigate('/checkout');
+    } else {
+      sessionStorage.setItem('redirect_after_auth', '/checkout');
+      onNavigate('/auth');
+    }
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: '#0d0b0c' }}>
       <AgeVerificationModal />
       <Header onNavigate={onNavigate} currentPath={currentPath} />
       <main style={{ flex: 1 }}>{children}</main>
-      <CartDrawer onCheckoutClick={() => onNavigate && onNavigate('/checkout')} />
+      <CartDrawer onCheckoutClick={handleProceedToCheckout} />
       <Footer />
     </div>
   );

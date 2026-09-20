@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../hooks/useCart';
 import type { CheckoutFormData, OrderInfo } from '../types/order';
 import { CheckoutForm } from '../components/checkout/CheckoutForm';
@@ -12,6 +12,14 @@ interface CheckoutPageProps {
 
 export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onNavigate }) => {
   const { cart, totalPrice, clearCart } = useCart();
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('khoi_nien_is_logged_in') === 'true';
+    if (!isLoggedIn && onNavigate) {
+      sessionStorage.setItem('redirect_after_auth', '/checkout');
+      onNavigate('/auth');
+    }
+  }, [onNavigate]);
 
   const [formData, setFormData] = useState<CheckoutFormData>({
     fullName: '',

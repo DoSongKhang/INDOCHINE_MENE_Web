@@ -28,6 +28,17 @@ export const CartPage: React.FC<CartPageProps> = ({ onNavigate }) => {
     );
   }
 
+  const handleCheckout = () => {
+    if (!onNavigate) return;
+    const isLoggedIn = localStorage.getItem('khoi_nien_is_logged_in') === 'true';
+    if (isLoggedIn) {
+      onNavigate('/checkout');
+    } else {
+      sessionStorage.setItem('redirect_after_auth', '/checkout');
+      onNavigate('/auth');
+    }
+  };
+
   return (
     <div style={{ backgroundColor: '#0d0b0c', minHeight: '80vh', padding: '60px 24px' }}>
       <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
@@ -54,7 +65,7 @@ export const CartPage: React.FC<CartPageProps> = ({ onNavigate }) => {
           <Button variant="outline" size="lg" onClick={() => onNavigate && onNavigate('/products')}>
             ← TIẾP TỤC MUA SẮM
           </Button>
-          <Button variant="gold" size="lg" onClick={() => onNavigate && onNavigate('/checkout')}>
+          <Button variant="gold" size="lg" onClick={handleCheckout}>
             TIẾN HÀNH THANH TOÁN →
           </Button>
         </div>
