@@ -1,7 +1,7 @@
-import React from 'react';
-import type { CartItem as CartItemType } from '../../types/cart';
-import { formatCurrency } from '../../utils/formatCurrency';
-import { useCart } from '../../hooks/useCart';
+import React from "react";
+import type { CartItem as CartItemType } from "../../types/cart";
+import { formatCurrency } from "../../utils/formatCurrency";
+import { useCart } from "../../hooks/useCart";
 
 interface CartItemProps {
   item: CartItemType;
@@ -13,67 +13,60 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
 
   return (
     <div
+      className="flex gap-4 border-b border-[#2e2629] items-center"
       style={{
-        display: 'flex',
-        gap: '16px',
-        padding: '16px 0',
-        borderBottom: '1px solid #2e2629',
-        alignItems: 'center',
+        padding: "16px 0",
       }}
     >
       {/* Product Thumb */}
       <img
         src={product.image}
         alt={product.name}
-        style={{
-          width: '70px',
-          height: '84px',
-          objectFit: 'cover',
-          borderRadius: '8px',
-          border: '1px solid #332b2e',
-          backgroundColor: '#0d0b0c',
-        }}
+        className="w-17.5 h-21 object-cover rounded-lg border border-[#332b2e] bg-[#0d0b0c]"
       />
 
       {/* Info */}
-      <div style={{ flex: 1 }}>
-        <h4 style={{ fontSize: '0.95rem', color: '#f5e6ab', marginBottom: '4px', lineHeight: 1.3 }}>
+      <div className="flex-1">
+        <h4
+          className="text-[0.95rem] text-[#f5e6ab] mb-1 leading-[1.3]"
+          style={{
+            marginBottom: "4px",
+          }}
+        >
           {product.name}
         </h4>
-        <p style={{ fontSize: '0.75rem', color: '#d4af37', marginBottom: '8px' }}>
+        <p
+          className="text-[0.75rem] text-[#d4af37] mb-2"
+          style={{ marginBottom: "8px" }}
+        >
           {formatCurrency(product.price)}
         </p>
 
         {/* Quantity control */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              backgroundColor: '#0d0b0c',
-              border: '1px solid #332b2e',
-              borderRadius: '6px',
-              fontSize: '0.8rem',
-            }}
-          >
+        <div className="flex items-center gap-2.5">
+          <div className="inline-flex items-center bg-[#0d0b0c] border border-[#332b2e] rounded-md text-[0.8rem]">
             <button
               onClick={() => updateQuantity(product.id, quantity - 1)}
-              style={{ padding: '4px 10px', color: '#d4af37' }}
+              style={{ padding: "4px 10px", color: "#d4af37" }}
             >
               -
             </button>
-            <span style={{ padding: '0 8px', color: '#f5f3f0', fontWeight: 'bold' }}>{quantity}</span>
+            <span
+              style={{ padding: "0 8px", color: "#f5f3f0", fontWeight: "bold" }}
+            >
+              {quantity}
+            </span>
             <button
               onClick={() => updateQuantity(product.id, quantity + 1)}
-              style={{ padding: '4px 10px', color: '#d4af37' }}
+              style={{ padding: "4px 10px", color: "#d4af37" }}
             >
               +
             </button>
           </div>
 
           <button
+            className="text-[#e74c3c] text-[0.8rem] opacity-[0.8]"
             onClick={() => removeFromCart(product.id)}
-            style={{ color: '#e74c3c', fontSize: '0.8rem', opacity: 0.8 }}
           >
             Xóa
           </button>
@@ -81,7 +74,7 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
       </div>
 
       {/* Total for item */}
-      <div style={{ textAlign: 'right', fontWeight: 'bold', color: '#fbb450', fontSize: '0.95rem' }}>
+      <div className="text-right font-bold text-[#fbb450] text-[0.95rem]">
         {formatCurrency(product.price * quantity)}
       </div>
     </div>

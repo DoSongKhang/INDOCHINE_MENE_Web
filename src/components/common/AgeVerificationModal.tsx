@@ -2,13 +2,27 @@ import React from 'react';
 import { useAge } from '../../context/AgeContext';
 import { Button } from './Button';
 
-export const AgeVerificationModal: React.FC = () => {
+interface AgeVerificationModalProps {
+  onNavigate?: (path: string) => void;
+}
+
+export const AgeVerificationModal: React.FC<AgeVerificationModalProps> = ({ onNavigate }) => {
   const { isVerified, verifyAge, rejectAge, isUnderage } = useAge();
+
+  const handleVerifyAge = () => {
+    verifyAge();
+    if (onNavigate) {
+      onNavigate('/');
+    } else {
+      window.location.hash = '/';
+    }
+  };
 
   if (isVerified) return null;
 
   return (
     <div
+      className='fixed inset-0 z-[99999] flex items-center justify-center bg-[#050505] p-5'
       style={{
         position: 'fixed',
         inset: 0,
@@ -73,7 +87,7 @@ export const AgeVerificationModal: React.FC = () => {
             </p>
 
             <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
-              <Button variant="gold" size="lg" fullWidth onClick={verifyAge}>
+              <Button variant="gold" size="lg" fullWidth onClick={handleVerifyAge}>
                 Tôi Đã Đủ 18 Tuổi
               </Button>
               <Button variant="outline" size="lg" fullWidth onClick={rejectAge}>

@@ -1,29 +1,32 @@
-import React, { useState } from 'react';
-import type { CartItem } from '../../types/cart';
-import { formatCurrency } from '../../utils/formatCurrency';
+import React, { useState } from "react";
+import type { CartItem } from "../../types/cart";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 interface OrderSummaryProps {
   cart: CartItem[];
   subtotal: number;
 }
 
-export const OrderSummary: React.FC<OrderSummaryProps> = ({ cart, subtotal }) => {
-  const [promoCode, setPromoCode] = useState('');
+export const OrderSummary: React.FC<OrderSummaryProps> = ({
+  cart,
+  subtotal,
+}) => {
+  const [promoCode, setPromoCode] = useState("");
   const [discountAmount, setDiscountAmount] = useState(0);
-  const [promoSuccess, setPromoSuccess] = useState('');
+  const [promoSuccess, setPromoSuccess] = useState("");
 
   const shippingFee = subtotal > 2000000 ? 0 : 50000;
 
   const handleApplyPromo = () => {
-    if (promoCode.trim().toUpperCase() === 'KHOINIEN2026') {
+    if (promoCode.trim().toUpperCase() === "KHOINIEN2026") {
       const disc = Math.round(subtotal * 0.1);
       setDiscountAmount(disc);
-      setPromoSuccess('Áp dụng mã KHOINIEN2026 thành công! Giảm 10%');
-    } else if (promoCode.trim().toUpperCase() === 'TETVIP') {
+      setPromoSuccess("Áp dụng mã KHOINIEN2026 thành công! Giảm 10%");
+    } else if (promoCode.trim().toUpperCase() === "TETVIP") {
       setDiscountAmount(200000);
-      setPromoSuccess('Áp dụng mã TETVIP thành công! Giảm 200.000đ');
+      setPromoSuccess("Áp dụng mã TETVIP thành công! Giảm 200.000đ");
     } else {
-      alert('Mã giảm giá không hợp lệ. Gợi ý thử mã: KHOINIEN2026 hoặc TETVIP');
+      alert("Mã giảm giá không hợp lệ. Gợi ý thử mã: KHOINIEN2026 hoặc TETVIP");
     }
   };
 
@@ -31,46 +34,51 @@ export const OrderSummary: React.FC<OrderSummaryProps> = ({ cart, subtotal }) =>
 
   return (
     <div
+      className="bg-[#171315] border border-[#332b2e] rounded-2xl p-6 sticky top-25"
       style={{
-        backgroundColor: '#171315',
-        border: '1px solid #332b2e',
-        borderRadius: '16px',
-        padding: '24px',
-        position: 'sticky',
-        top: '100px',
+        padding: "24px",
       }}
     >
-      <h3 style={{ fontSize: '1.2rem', color: '#d4af37', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <span>🛍️</span> ĐƠN HÀNG CỦA BẠN ({cart.reduce((s, i) => s + i.quantity, 0)})
+      <h3
+        className="text-[1.2rem] text-[#d4af37] mb-5 flex items-center gap-2.5"
+        style={{
+          marginBottom: "20px",
+        }}
+      >
+        <span>🛍️</span> ĐƠN HÀNG CỦA BẠN (
+        {cart.reduce((s, i) => s + i.quantity, 0)})
       </h3>
 
       {/* Cart Items List */}
-      <div style={{ maxHeight: '300px', overflowY: 'auto', marginBottom: '20px', paddingRight: '6px' }}>
+      <div
+        className="max-h-75 overflow-y-auto mb-5 pr-1.5"
+        style={{
+          marginBottom: "20px",
+          paddingRight: "6px",
+        }}
+      >
         {cart.map((item) => (
           <div
             key={item.product.id}
+            className="flex items-center justify-between gap-3 py-2.5 border-b border-[#2e2629] text-[0.85rem]"
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '12px',
-              padding: '10px 0',
-              borderBottom: '1px solid #2e2629',
-              fontSize: '0.85rem',
+              padding: "10px 0",
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div className="flex items-center gap-2.5">
               <img
                 src={item.product.image}
                 alt={item.product.name}
-                style={{ width: '45px', height: '55px', objectFit: 'cover', borderRadius: '6px' }}
+                className="w-11.25 h-13.75 object-cover rounded-md"
               />
               <div>
-                <div style={{ color: '#f5e6ab', fontWeight: 600, fontSize: '0.85rem' }}>{item.product.name}</div>
-                <div style={{ color: '#6e6b68' }}>Số lượng: {item.quantity}</div>
+                <div className="text-[#f5e6ab] font-semibold text-[0.85rem]">
+                  {item.product.name}
+                </div>
+                <div className="text-[#6e6b68]">Số lượng: {item.quantity}</div>
               </div>
             </div>
-            <div style={{ color: '#fbb450', fontWeight: 'bold' }}>
+            <div className="text-[#fbb450] font-bold">
               {formatCurrency(item.product.price * item.quantity)}
             </div>
           </div>
@@ -78,77 +86,82 @@ export const OrderSummary: React.FC<OrderSummaryProps> = ({ cart, subtotal }) =>
       </div>
 
       {/* Promo Code Box */}
-      <div style={{ marginBottom: '20px' }}>
-        <div style={{ display: 'flex', gap: '8px' }}>
+      <div style={{ marginBottom: "20px" }}>
+        <div className="flex gap-2">
           <input
             type="text"
             placeholder="Mã ưu đãi (VD: KHOINIEN2026)"
             value={promoCode}
             onChange={(e) => setPromoCode(e.target.value)}
+            className="flex-1 bg-[#0d0b0c] border border-[#332b2e] rounded-md py-2 px-3 text-[#f5f3f0] text-[0.85rem] outline-none uppercase"
             style={{
-              flex: 1,
-              backgroundColor: '#0d0b0c',
-              border: '1px solid #332b2e',
-              borderRadius: '6px',
-              padding: '8px 12px',
-              color: '#f5f3f0',
-              fontSize: '0.85rem',
-              outline: 'none',
-              textTransform: 'uppercase',
+              padding: "8px 12px",
             }}
           />
           <button
             type="button"
             onClick={handleApplyPromo}
+            className="bg-[#4a151b] text-[#f5e6ab] border border-[#d4af37] rounded-md py-2 px-4 text-[0.8rem] font-bold"
             style={{
-              backgroundColor: '#4a151b',
-              color: '#f5e6ab',
-              border: '1px solid #d4af37',
-              borderRadius: '6px',
-              padding: '8px 16px',
-              fontSize: '0.8rem',
-              fontWeight: 'bold',
+              padding: "8px 16px",
             }}
           >
             ÁP DỤNG
           </button>
         </div>
         {promoSuccess && (
-          <p style={{ color: '#2ecc71', fontSize: '0.75rem', marginTop: '6px' }}>✓ {promoSuccess}</p>
+          <p
+            className="text-[#2ecc71] text-[0.75rem] mt-1.5"
+            style={{ marginTop: "6px" }}
+          >
+            ✓ {promoSuccess}
+          </p>
         )}
       </div>
 
       {/* Financial Summary Calculation */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '0.9rem', borderTop: '1px solid #2e2629', paddingTop: '16px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', color: '#a39c97' }}>
+      <div
+        className="flex flex-col gap-2.5 text-[0.9rem] border-t border-[#2e2629] pt-4"
+        style={{
+          paddingTop: "16px",
+        }}
+      >
+        <div className="flex justify-between text-[#a39c97]">
           <span>Tạm tính:</span>
-          <span style={{ color: '#f5f3f0' }}>{formatCurrency(subtotal)}</span>
+          <span className="text-[#f5f3f0]">{formatCurrency(subtotal)}</span>
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', color: '#a39c97' }}>
+        <div className="flex justify-between text-[#a39c97]">
           <span>Phí vận chuyển bảo quản hỏa tốc:</span>
-          <span>{shippingFee === 0 ? <strong style={{ color: '#2ecc71' }}>Miễn phí (Đơn &gt;2 triệu)</strong> : formatCurrency(shippingFee)}</span>
+          <span>
+            {shippingFee === 0 ? (
+              <strong className="text-[#2ecc71]">
+                Miễn phí (Đơn &gt;2 triệu)
+              </strong>
+            ) : (
+              formatCurrency(shippingFee)
+            )}
+          </span>
         </div>
 
         {discountAmount > 0 && (
-          <div style={{ display: 'flex', justifyContent: 'space-between', color: '#2ecc71' }}>
+          <div className="flex justify-between text-[#2ecc71]">
             <span>Ưu đãi giảm giá VIP:</span>
             <span>-{formatCurrency(discountAmount)}</span>
           </div>
         )}
 
         <div
+          className="flex justify-between items-baseline border-t border-[#332b2e] pt-4 mt-2"
           style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'baseline',
-            borderTop: '1px solid #332b2e',
-            paddingTop: '16px',
-            marginTop: '8px',
+            paddingTop: "16px",
+            marginTop: "8px",
           }}
         >
-          <span style={{ fontSize: '1.1rem', fontWeight: 600, color: '#f5f3f0' }}>TỔNG CỘNG:</span>
-          <span style={{ fontSize: '1.6rem', fontWeight: 'bold', color: '#fbb450' }}>
+          <span className="text-[1.1rem] font-semibold text-[#f5f3f0]">
+            TỔNG CỘNG:
+          </span>
+          <span className="text-[1.6rem] font-bold text-[#fbb450]">
             {formatCurrency(grandTotal)}
           </span>
         </div>
