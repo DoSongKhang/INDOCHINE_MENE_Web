@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { MOCK_WINES } from '../data/mockWines';
 import type { WineItem } from '../types/wine';
-import { ProductGrid } from '../components/product/ProductGrid';
+import { Badge } from '../components/common/Badge';
 import { Modal } from '../components/common/Modal';
 import { ProductDetails } from '../components/product/ProductDetails';
 import { Button } from '../components/common/Button';
 import { formatCurrency } from '../utils/formatCurrency';
 import { useCart } from '../hooks/useCart';
 import video from "../assets/images/wines/video1.mp4"
+import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 
 interface HomePageProps {
   onNavigate?: (path: string) => void;
@@ -16,10 +17,11 @@ interface HomePageProps {
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   const { addToCart } = useCart();
   const [selectedProduct, setSelectedProduct] = useState<WineItem | null>(null);
+  const [featuredIndex, setFeaturedIndex] = useState(0);
   const heroSlide = 0;
 
   const heritageWine = MOCK_WINES.find((w) => w.id === 'khoi-nien-heritage-limited') || MOCK_WINES[0];
-  const featuredWines = MOCK_WINES.slice(0, 6);
+  const featuredWines = MOCK_WINES.slice(0, 3);
 
   const heroSlides = [
     {
@@ -169,7 +171,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                     {formatCurrency(heritageWine.originalPrice || 3800000)}
                   </div>
                 </div>
-                <Button variant="gold" size="lg" onClick={() => addToCart(heritageWine, 1)}>
+                <Button variant="gold" size="lg" onClick={() => addToCart(heritageWine, 1)}
+                  className='hover:!bg-yellow-300 hover:opacity-90 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50'
+                >
                   ĐẶT HÀNG NGAY
                 </Button>
               </div>
@@ -212,8 +216,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 3. FEATURED PRODUCTS CATALOG */}
-      <section style={{ backgroundColor: '#0d0b0c', padding: '90px 24px' }}>
+      {/* 3. FEATURED PRODUCTS CAROUSEL */}
+      <section style={{ backgroundColor: '#0d0b0c', padding: '90px 24px', overflow: 'hidden' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '50px' }}>
             <span style={{ color: '#d4af37', fontSize: '0.85rem', letterSpacing: '2px', fontWeight: 'bold' }}>
@@ -225,16 +229,223 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div style={{ width: '80px', height: '2px', backgroundColor: '#d4af37', margin: '16px auto 0' }} />
           </div>
 
-          <ProductGrid products={featuredWines} onQuickView={(p) => setSelectedProduct(p)} />
-
-          <div style={{ textAlign: 'center', marginTop: '48px' }}>
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => onNavigate && onNavigate('/products')}
+          {/* Carousel Container */}
+          <div style={{ position: 'relative' }}>
+            {/* Prev Button */}
+            <button
+              onClick={() => setFeaturedIndex((prev) => (prev - 1 + featuredWines.length) % featuredWines.length)}
+              style={{
+                position: 'absolute',
+                left: '-10px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                zIndex: 20,
+                width: '48px',
+                height: '48px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.15)',
+                color: '#ffffff',
+                fontSize: '1.2rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                backdropFilter: 'blur(8px)',
+                transition: 'all 0.3s ease',
+              }}
+              className="hover:bg-white/20 hover:border-white/40 hover:scale-110 active:scale-95"
             >
-              XEM TOÀN BỘ BỘ SƯU TẬP INDOCHINE MÈNE →
-            </Button>
+              <LuChevronLeft />
+            </button>
+
+            {/* Next Button */}
+            <button
+              onClick={() => setFeaturedIndex((prev) => (prev + 1) % featuredWines.length)}
+              style={{
+                position: 'absolute',
+                right: '-10px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                zIndex: 20,
+                width: '48px',
+                height: '48px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.15)',
+                color: '#ffffff',
+                fontSize: '1.2rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                backdropFilter: 'blur(8px)',
+                transition: 'all 0.3s ease',
+              }}
+              className="hover:bg-white/20 hover:border-white/40 hover:scale-110 active:scale-95"
+            >
+              <LuChevronRight />
+            </button>
+
+            {/* Cards Row */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '24px',
+                padding: '20px 60px',
+              }}
+            >
+              {featuredWines.map((product, index) => {
+                const isCenter = index === featuredIndex;
+                const offset = index - featuredIndex;
+                // Show prev, center, next
+                const normalizedOffset = ((offset + featuredWines.length) % featuredWines.length);
+                const displayOffset = normalizedOffset <= Math.floor(featuredWines.length / 2) ? normalizedOffset : normalizedOffset - featuredWines.length;
+
+                if (Math.abs(displayOffset) > 1) return null;
+
+                return (
+                  <div
+                    key={product.id}
+                    style={{
+                      flex: isCenter ? '0 0 360px' : '0 0 250px',
+                      opacity: isCenter ? 1 : 0.5,
+                      transform: isCenter
+                        ? 'scale(1) translateX(0)'
+                        : `scale(0.9) translateX(${displayOffset * 20}px)`,
+                      filter: isCenter ? 'none' : 'brightness(0.55) blur(1px)',
+                      transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                      cursor: isCenter ? 'default' : 'pointer',
+                      order: displayOffset + 1,
+                    }}
+                    onClick={() => !isCenter && setFeaturedIndex(index)}
+                  >
+                    {/* Card */}
+                    <div
+                      style={{
+                        backgroundColor: '#141214',
+                        border: isCenter ? '1px solid rgba(212, 175, 55, 0.35)' : '1px solid #2a2528',
+                        borderRadius: '20px',
+                        overflow: 'hidden',
+                        boxShadow: isCenter
+                          ? '0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(212,175,55,0.08)'
+                          : '0 8px 24px rgba(0,0,0,0.3)',
+                        transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                      }}
+                    >
+                      {/* Image */}
+                      <div style={{ position: 'relative', paddingTop: '85%', backgroundColor: '#0f0d0e', overflow: 'hidden' }}>
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          style={{
+                            position: 'absolute',
+                            inset: 0,
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            transition: 'transform 0.6s ease',
+                          }}
+                        />
+                        <div
+                          style={{
+                            position: 'absolute',
+                            inset: 0,
+                            background: 'linear-gradient(to top, rgba(20, 18, 20, 0.95) 0%, transparent 55%)',
+                          }}
+                        />
+                        {/* Badges */}
+                        <div style={{ position: 'absolute', top: '14px', left: '14px', display: 'flex', flexDirection: 'column', gap: '6px', zIndex: 5 }}>
+                          {product.isLimited && <Badge type="limited">BẢN GIỚI HẠN</Badge>}
+                          {product.isHot && <Badge type="hot">HOT TẾT</Badge>}
+                          {product.isNew && <Badge type="new">MỚI RA MẮT</Badge>}
+                        </div>
+                        {/* ABV tag */}
+                        <span style={{
+                          position: 'absolute', bottom: '12px', right: '12px',
+                          fontSize: '0.72rem', color: '#d4af37',
+                          backgroundColor: 'rgba(13,11,12,0.85)', padding: '4px 10px',
+                          borderRadius: '6px', border: '1px solid rgba(212,175,55,0.25)',
+                        }}>
+                          {product.abv} • {product.volume}
+                        </span>
+                      </div>
+
+                      {/* Content */}
+                      <div style={{ padding: '20px 22px 24px' }}>
+                        <div style={{ fontSize: '0.72rem', color: '#d4af37', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '6px' }}>
+                          {product.categoryName}
+                        </div>
+                        <h3 style={{
+                          fontSize: isCenter ? '1.15rem' : '1rem',
+                          color: '#f5e6ab',
+                          lineHeight: 1.35,
+                          marginBottom: '8px',
+                          height: '2.7em',
+                          overflow: 'hidden',
+                          display: '-webkit-box',
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: 'vertical',
+                        }}>
+                          {product.name}
+                        </h3>
+
+                        {/* Price */}
+                        <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', marginBottom: isCenter ? '16px' : '0' }}>
+                          <span style={{ fontSize: isCenter ? '1.3rem' : '1.1rem', fontWeight: 700, color: '#fbb450' }}>
+                            {formatCurrency(product.price)}
+                          </span>
+                          {product.originalPrice && (
+                            <span style={{ fontSize: '0.82rem', color: '#6e6b68', textDecoration: 'line-through' }}>
+                              {formatCurrency(product.originalPrice)}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* CTA buttons - only for center card */}
+                        {isCenter && (
+                          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '4px' }}>
+                            <Button variant="outline" size="sm" onClick={() => setSelectedProduct(product)}>
+                              XEM CHI TIẾT
+                            </Button>
+                            <Button
+                              variant="gold"
+                              size="sm"
+                              onClick={() => addToCart(product, 1)}
+                              className="hover:bg-amber-100 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                            >
+                              + GIỎ HÀNG
+                            </Button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Dots Indicator */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '28px' }}>
+              {featuredWines.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setFeaturedIndex(index)}
+                  style={{
+                    width: featuredIndex === index ? '28px' : '10px',
+                    height: '10px',
+                    borderRadius: '5px',
+                    backgroundColor: featuredIndex === index ? '#d4af37' : 'rgba(255,255,255,0.15)',
+                    border: 'none',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                  }}
+                  className={featuredIndex === index ? '' : 'hover:bg-white/30'}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

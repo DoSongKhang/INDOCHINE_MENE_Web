@@ -1,6 +1,7 @@
 import React from 'react';
-import { CATEGORIES } from '../../constants/categories';
-import type { WineCategory, WineFilter } from '../../types/wine';
+import type { WineFilter } from '../../types/wine';
+import { LuRotateCcw } from 'react-icons/lu';
+import { FaSearch } from 'react-icons/fa';
 
 interface ProductFilterProps {
   filter: WineFilter;
@@ -39,17 +40,28 @@ export const ProductFilter: React.FC<ProductFilterProps> = ({
       >
         {/* Search Bar */}
         <div style={{ position: 'relative', flex: '1 1 300px', maxWidth: '450px' }}>
+          <FaSearch
+            style={{
+              position: 'absolute',
+              left: '16px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              color: '#a39c97',
+              fontSize: '0.85rem',
+              pointerEvents: 'none',
+            }}
+          />
           <input
             type="text"
             value={filter.searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
-            placeholder="🔍 Tìm kiếm Prosecco, Gift Set Tết, vang đỏ..."
+            placeholder="Tìm kiếm Prosecco, Gift Set Tết, vang đỏ..."
             style={{
               width: '100%',
               backgroundColor: '#0d0b0c',
               border: '1px solid #332b2e',
               borderRadius: '25px',
-              padding: '10px 20px',
+              padding: '10px 38px 10px 42px',
               color: '#f5f3f0',
               fontSize: '0.9rem',
               outline: 'none',
@@ -100,9 +112,10 @@ export const ProductFilter: React.FC<ProductFilterProps> = ({
           {(filter.searchQuery || filter.sortBy !== 'featured') && (
             <button
               onClick={onReset}
-              style={{ color: '#e74c3c', fontSize: '0.8rem', textDecoration: 'underline' }}
+              className="group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[0.8rem] font-medium text-red-400 bg-red-500/10 border border-red-500/25 hover:bg-red-500/20 hover:border-red-500/40 hover:text-red-300 transition-all duration-200 cursor-pointer"
             >
-              Đặt lại lọc
+              <LuRotateCcw className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-rotate-180" />
+              <span>Đặt lại</span>
             </button>
           )}
         </div>

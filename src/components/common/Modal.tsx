@@ -4,10 +4,11 @@ interface ModalProps {
   isOpen: boolean;
   onClose?: () => void;
   title?: string;
+  maxWidth?: string;
   children: React.ReactNode;
 }
 
-export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
+export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, maxWidth = '650px', children }) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -42,7 +43,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }
           backgroundColor: '#171315',
           border: '1px solid rgba(212, 175, 55, 0.3)',
           borderRadius: '16px',
-          maxWidth: '650px',
+          maxWidth: maxWidth,
           width: '100%',
           maxHeight: '90vh',
           overflowY: 'auto',
@@ -55,16 +56,27 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }
         {onClose && (
           <button
             onClick={onClose}
+            aria-label="Đóng"
             style={{
               position: 'absolute',
-              top: '18px',
-              right: '20px',
-              color: '#a39c97',
-              fontSize: '1.4rem',
-              lineHeight: 1,
-              padding: '4px 8px',
+              top: '16px',
+              right: '16px',
+              zIndex: 60,
+              width: '36px',
+              height: '36px',
               borderRadius: '50%',
+              backgroundColor: 'rgba(23, 19, 21, 0.95)',
+              border: '1px solid rgba(212, 175, 55, 0.5)',
+              color: '#f5e6ab',
+              fontSize: '1.2rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.6)',
             }}
+            className="hover:scale-110 hover:border-gold hover:text-white"
           >
             ✕
           </button>

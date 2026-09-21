@@ -3,6 +3,7 @@ import { useCart } from '../hooks/useCart';
 import { CartItem } from '../components/cart/CartItem';
 import { formatCurrency } from '../utils/formatCurrency';
 import { Button } from '../components/common/Button';
+import { FaShoppingCart } from 'react-icons/fa';
 
 interface CartPageProps {
   onNavigate?: (path: string) => void;
@@ -15,7 +16,7 @@ export const CartPage: React.FC<CartPageProps> = ({ onNavigate }) => {
     return (
       <div style={{ backgroundColor: '#050505', minHeight: '75vh', padding: '80px 24px', textAlign: 'center' }}>
         <div style={{ maxWidth: '500px', margin: '0 auto', backgroundColor: '#121212', padding: '40px', borderRadius: '16px', border: '1px solid #222222' }}>
-          <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🛒</div>
+          <div style={{ fontSize: '3rem', marginBottom: '16px', display: "flex", justifyContent: "center", alignItems: "center" }}><FaShoppingCart /></div>
           <h2 style={{ color: '#ffffff', marginBottom: '12px', fontFamily: 'var(--font-serif)' }}>Giỏ Hàng Của Bạn Đang Trống</h2>
           <p style={{ color: '#999999', marginBottom: '24px' }}>
             Khám phá ngay bộ sưu tập Prosecco &amp; Rượu Vang Indochine Mène tuyệt hảo nhất.
