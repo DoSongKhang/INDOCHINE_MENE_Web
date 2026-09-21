@@ -110,10 +110,10 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
   const currentProduct = products[currentIndex] || products[0];
   const discountPercent = currentProduct.originalPrice
     ? Math.round(
-        ((currentProduct.originalPrice - currentProduct.price) /
-          currentProduct.originalPrice) *
-          100,
-      )
+      ((currentProduct.originalPrice - currentProduct.price) /
+        currentProduct.originalPrice) *
+      100,
+    )
     : 0;
 
   return (
@@ -159,25 +159,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
           zIndex: 2,
         }}
       >
-        {/* Gallery Counter */}
-        <div style={{ display: "flex", alignItems: "baseline", gap: "8px" }}>
-          <span
-            style={{
-              fontFamily: "var(--font-serif)",
-              fontSize: "1.6rem",
-              fontWeight: 700,
-              color: "#ffffff",
-              lineHeight: 1,
-            }}
-          >
-            {String(currentIndex + 1).padStart(2, "0")}
-          </span>
-          <span
-            style={{ color: "#666666", fontSize: "0.88rem", fontWeight: 500 }}
-          >
-            / {String(products.length).padStart(2, "0")} KIỆT TÁC
-          </span>
-        </div>
+
       </div>
 
       {/* Presentation Stage Wrapper with Dedicated Fixed Navigation Arrows */}
@@ -318,44 +300,6 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
             }}
           >
             {/* Badges Top Left */}
-            <div
-              style={{
-                position: "absolute",
-                top: "16px",
-                left: "16px",
-                zIndex: 5,
-                display: "flex",
-                flexDirection: "column",
-                gap: "6px",
-              }}
-            >
-              {currentProduct.isLimited && (
-                <Badge type="limited">BẢN GIỚI HẠN</Badge>
-              )}
-              {currentProduct.isHot && <Badge type="hot">HOT TẾT</Badge>}
-              {currentProduct.isNew && <Badge type="new">MỚI RA MẮT</Badge>}
-            </div>
-
-            {/* Discount Tag Top Right */}
-            {discountPercent > 0 && (
-              <div
-                style={{
-                  position: "absolute",
-                  top: "16px",
-                  right: "16px",
-                  zIndex: 5,
-                  backgroundColor: "#ffffff",
-                  color: "#000000",
-                  padding: "4px 10px",
-                  borderRadius: "12px",
-                  fontWeight: 700,
-                  fontSize: "0.8rem",
-                  letterSpacing: "0.5px",
-                }}
-              >
-                TIẾT KIỆM {discountPercent}%
-              </div>
-            )}
 
             {/* Product Image - Luôn lấp đầy khung ảnh đồng đều 100% */}
             <img
@@ -501,7 +445,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                   borderLeft: "2px solid #ffffff",
                   paddingLeft: "10px",
                   display: "-webkit-box",
-                  WebkitLineClamp: 2,
+
                   WebkitBoxOrient: "vertical",
                   overflow: "hidden",
                 }}
@@ -516,26 +460,10 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
             >
               {/* Technical Specs Pill Badges (4 cột đồng nhất) */}
               <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(4, 1fr)",
-                  gap: "8px",
-                  backgroundColor: "#121212",
-                  padding: "8px 12px",
-                  borderRadius: "10px",
-                  border: "1px solid #262626",
-                }}
+
               >
                 <div>
-                  <div
-                    style={{
-                      color: "#777777",
-                      fontSize: "0.65rem",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Nồng độ
-                  </div>
+
                   <div
                     style={{
                       color: "#ffffff",
@@ -551,15 +479,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                   </div>
                 </div>
                 <div>
-                  <div
-                    style={{
-                      color: "#777777",
-                      fontSize: "0.65rem",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Dung tích
-                  </div>
+
                   <div
                     style={{
                       color: "#ffffff",
@@ -575,15 +495,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                   </div>
                 </div>
                 <div>
-                  <div
-                    style={{
-                      color: "#777777",
-                      fontSize: "0.65rem",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Giống nho
-                  </div>
+
                   <div
                     style={{
                       color: "#ffffff",
@@ -599,15 +511,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                   </div>
                 </div>
                 <div>
-                  <div
-                    style={{
-                      color: "#777777",
-                      fontSize: "0.65rem",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Nhiệt độ
-                  </div>
+
                   <div
                     style={{
                       color: "#ffffff",
@@ -619,7 +523,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                       textOverflow: "ellipsis",
                     }}
                   >
-                    {currentProduct.tastingNotes?.servingTemp || "6°C - 8°C"}
+                    {currentProduct.tastingNotes?.servingTemp || ""}
                   </div>
                 </div>
               </div>
@@ -633,16 +537,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                     gap: "4px",
                   }}
                 >
-                  <div
-                    style={{
-                      color: "#ffffff",
-                      fontSize: "0.72rem",
-                      fontWeight: 700,
-                      letterSpacing: "0.8px",
-                    }}
-                  >
-                    NỐT HƯƠNG &amp; VỊ GIÁC (SOMMELIER NOTES):
-                  </div>
+
                   <div
                     style={{
                       display: "flex",
@@ -652,40 +547,8 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                       overflow: "hidden",
                     }}
                   >
-                    {currentProduct.tastingNotes.aroma
-                      .slice(0, 2)
-                      .map((note, idx) => (
-                        <span
-                          key={`aroma-${idx}`}
-                          style={{
-                            backgroundColor: "rgba(255, 255, 255, 0.08)",
-                            color: "#e5e5e5",
-                            padding: "2px 8px",
-                            borderRadius: "12px",
-                            fontSize: "0.72rem",
-                            border: "1px solid rgba(255, 255, 255, 0.1)",
-                          }}
-                        >
-                          🌸 {note}
-                        </span>
-                      ))}
-                    {currentProduct.tastingNotes.taste
-                      .slice(0, 2)
-                      .map((t, idx) => (
-                        <span
-                          key={`taste-${idx}`}
-                          style={{
-                            backgroundColor: "rgba(255, 255, 255, 0.08)",
-                            color: "#e5e5e5",
-                            padding: "2px 8px",
-                            borderRadius: "12px",
-                            fontSize: "0.72rem",
-                            border: "1px solid rgba(255, 255, 255, 0.1)",
-                          }}
-                        >
-                          🥂 {t}
-                        </span>
-                      ))}
+
+
                   </div>
                 </div>
               )}
