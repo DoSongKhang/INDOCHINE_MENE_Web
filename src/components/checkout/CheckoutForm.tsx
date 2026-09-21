@@ -40,14 +40,14 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         <div className="grid grid-cols-[repeat(auto-fit, minmax(220px, 1fr))] gap-4">
           <Input
             label="Họ và Tên người nhận *"
-            placeholder="Ví dụ: Nguyễn Văn A"
+            placeholder="Ví dụ: Đỗ Song Khang"
             value={formData.fullName}
             onChange={(e) => onChange("fullName", e.target.value)}
             required
           />
           <Input
             label="Số Điện Thoại liên hệ *"
-            placeholder="Ví dụ: 0988 123 456"
+            placeholder="Ví dụ: 0392006741"
             value={formData.phone}
             onChange={(e) => onChange("phone", e.target.value)}
             required
@@ -58,7 +58,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
           <Input
             label="Địa chỉ Email (Nhận hóa đơn điện tử) *"
             type="email"
-            placeholder="Ví dụ: email@example.com"
+            placeholder="Ví dụ: khangdo.09102006@gmail.com"
             value={formData.email}
             onChange={(e) => onChange("email", e.target.value)}
             required
