@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useCart } from '../../hooks/useCart';
 import { ROUTES } from '../../constants/routes';
+import anh2 from "../../assets/images/wines/anh2.png"
 import { FaShoppingCart } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa';
 
@@ -18,7 +19,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
     { label: 'TRANG CHỦ', path: ROUTES.HOME },
     { label: 'VỀ CHÚNG TÔI', path: ROUTES.ABOUT },
     { label: 'GIFT SET', path: `${ROUTES.PRODUCTS}?cat=giftset` },
-    { label: 'PROSECCO & BỘ SƯU TẬP', path: ROUTES.PRODUCTS },
+    { label: 'SẢN PHẨM', path: ROUTES.PRODUCTS },
     { label: 'LIÊN HỆ', path: ROUTES.CONTACT },
   ];
 
@@ -63,16 +64,14 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
                 width: '38px',
                 height: '38px',
                 borderRadius: '50%',
-                border: '1.5px solid #ffffff',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                background: 'rgba(255, 255, 255, 0.05)',
-                flexShrink: 0,
+                background: 'rgba(8, 8, 8, 0.95)',
               }}
             >
-              <span style={{ fontFamily: 'var(--font-serif)', color: '#ffffff', fontWeight: 'bold', fontSize: '0.95rem', letterSpacing: '1px' }}>
-                IM
+              <span style={{ fontFamily: 'var(--font-serif)', color: '#ffffff', fontWeight: 'bold', fontSize: '1.1rem', letterSpacing: '1px' }}>
+                <img src={anh2} alt="logo" />
               </span>
             </div>
             <div>
