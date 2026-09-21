@@ -14,38 +14,52 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px' }}>
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: '32px',
+        alignItems: 'start',
+      }}
+    >
       {/* Left Image Section */}
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative', width: '100%', maxWidth: '500px', margin: '0 auto' }}>
         <div
           style={{
             position: 'relative',
-            paddingTop: '120%',
+            width: '100%',
+            height: '500px',
             borderRadius: '12px',
             overflow: 'hidden',
             backgroundColor: '#0d0b0c',
-            border: '1px solid #332b2e',
+            border: '1px solid rgba(212, 175, 55, 0.25)',
+            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           <img
             src={product.image}
             alt={product.name}
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
         </div>
         {product.isLimited && (
           <div
             style={{
               position: 'absolute',
-              top: '16px',
-              left: '16px',
+              top: '12px',
+              left: '12px',
               backgroundColor: '#722f37',
               color: '#f5e6ab',
-              padding: '6px 14px',
+              padding: '4px 12px',
               borderRadius: '20px',
-              fontSize: '0.75rem',
+              fontSize: '0.72rem',
               fontWeight: 'bold',
               border: '1px solid #d4af37',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.6)',
+              letterSpacing: '0.5px',
             }}
           >
             LIMITED EDITION

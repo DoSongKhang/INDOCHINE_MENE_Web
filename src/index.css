@@ -194,18 +194,139 @@ img {
   border: 1px solid var(--color-border);
 }
 
-@keyframes showcaseFadeIn {
-  from {
+/* ============================================
+   Product Showcase Slider — Premium Transitions
+   ============================================ */
+
+/* --- Container slide: cinematic directional entrance --- */
+@keyframes showcaseSlideInNext {
+  0% {
     opacity: 0;
-    transform: scale(0.97) translateY(8px);
+    transform: translate3d(60px, 0, 0) scale(0.97);
   }
-  to {
+  50% {
+    opacity: 0.7;
+  }
+  100% {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 }
 
+@keyframes showcaseSlideInPrev {
+  0% {
+    opacity: 0;
+    transform: translate3d(-60px, 0, 0) scale(0.97);
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* --- Image: blur-to-sharp cinematic reveal with zoom settle --- */
+@keyframes showcaseImageIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.08);
+    filter: blur(8px) brightness(0.6);
+  }
+  40% {
+    opacity: 0.85;
+    filter: blur(3px) brightness(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px) brightness(0.92);
+  }
+}
+
+/* --- Details: cascading stagger for each section group --- */
+@keyframes showcaseDetailFadeUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* --- Container breathing pulse on slide change --- */
+@keyframes showcaseContainerPulse {
+  0% {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  }
+  40% {
+    box-shadow: 0 24px 80px rgba(255, 255, 255, 0.04), 0 20px 60px rgba(0, 0, 0, 0.8);
+  }
+  100% {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* --- Class assignments --- */
+
+.showcase-transition-next {
+  animation: showcaseSlideInNext 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.showcase-transition-prev {
+  animation: showcaseSlideInPrev 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
 .showcase-transition {
-  animation: showcaseFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: showcaseSlideInNext 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.showcase-image-anim {
+  animation: showcaseImageIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity, filter;
+}
+
+/* Staggered detail sections — each child group gets increasing delay */
+.showcase-detail-stagger-1 {
+  animation: showcaseDetailFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.08s forwards;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.showcase-detail-stagger-2 {
+  animation: showcaseDetailFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.14s forwards;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.showcase-detail-stagger-3 {
+  animation: showcaseDetailFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.20s forwards;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.showcase-detail-stagger-4 {
+  animation: showcaseDetailFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.26s forwards;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.showcase-detail-stagger-5 {
+  animation: showcaseDetailFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.32s forwards;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Legacy fallback — still works if no stagger classes applied */
+.showcase-details-anim {
+  animation: showcaseDetailFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.06s forwards;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Container pulse on slide change */
+.showcase-container-pulse {
+  animation: showcaseContainerPulse 0.8s ease-out forwards;
 }
 
