@@ -1,18 +1,13 @@
 import { useState, useMemo } from 'react';
-import type { WineItem, WineFilter, WineCategory } from '../types/wine';
+import type { WineItem, WineFilter } from '../types/wine';
 
 export const useFilter = (wines: WineItem[]) => {
   const [filter, setFilter] = useState<WineFilter>({
-    category: 'all',
     searchQuery: '',
     minPrice: 0,
     maxPrice: 10000000,
     sortBy: 'featured',
   });
-
-  const setCategory = (category: WineCategory | 'all') => {
-    setFilter((prev) => ({ ...prev, category }));
-  };
 
   const setSearchQuery = (searchQuery: string) => {
     setFilter((prev) => ({ ...prev, searchQuery }));
@@ -28,7 +23,6 @@ export const useFilter = (wines: WineItem[]) => {
 
   const resetFilters = () => {
     setFilter({
-      category: 'all',
       searchQuery: '',
       minPrice: 0,
       maxPrice: 10000000,
@@ -39,11 +33,6 @@ export const useFilter = (wines: WineItem[]) => {
   const filteredWines = useMemo(() => {
     return wines
       .filter((wine) => {
-        // Filter by category
-        if (filter.category !== 'all' && wine.category !== filter.category) {
-          return false;
-        }
-
         // Filter by search query
         if (filter.searchQuery.trim() !== '') {
           const query = filter.searchQuery.toLowerCase();
@@ -77,7 +66,6 @@ export const useFilter = (wines: WineItem[]) => {
   return {
     filter,
     setFilter,
-    setCategory,
     setSearchQuery,
     setPriceRange,
     setSortBy,

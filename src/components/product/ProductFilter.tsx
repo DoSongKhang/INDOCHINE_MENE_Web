@@ -4,7 +4,6 @@ import type { WineCategory, WineFilter } from '../../types/wine';
 
 interface ProductFilterProps {
   filter: WineFilter;
-  onCategoryChange: (category: WineCategory | 'all') => void;
   onSearchChange: (search: string) => void;
   onSortChange: (sortBy: WineFilter['sortBy']) => void;
   onReset: () => void;
@@ -13,7 +12,6 @@ interface ProductFilterProps {
 
 export const ProductFilter: React.FC<ProductFilterProps> = ({
   filter,
-  onCategoryChange,
   onSearchChange,
   onSortChange,
   onReset,
@@ -99,7 +97,7 @@ export const ProductFilter: React.FC<ProductFilterProps> = ({
             <option value="rating">Đánh Giá Cao Nhất</option>
           </select>
 
-          {(filter.category !== 'all' || filter.searchQuery || filter.sortBy !== 'featured') && (
+          {(filter.searchQuery || filter.sortBy !== 'featured') && (
             <button
               onClick={onReset}
               style={{ color: '#e74c3c', fontSize: '0.8rem', textDecoration: 'underline' }}
@@ -108,33 +106,6 @@ export const ProductFilter: React.FC<ProductFilterProps> = ({
             </button>
           )}
         </div>
-      </div>
-
-      {/* Category Pills */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-        {CATEGORIES.map((cat) => {
-          const isSelected = filter.category === cat.id;
-          return (
-            <button
-              key={cat.id}
-              onClick={() => onCategoryChange(cat.id)}
-              style={{
-                padding: '8px 18px',
-                borderRadius: '20px',
-                fontSize: '0.85rem',
-                fontWeight: isSelected ? 700 : 500,
-                color: isSelected ? '#0d0b0c' : '#f5f3f0',
-                background: isSelected
-                  ? 'linear-gradient(135deg, #f5e6ab, #d4af37)'
-                  : 'rgba(255, 255, 255, 0.05)',
-                border: isSelected ? 'none' : '1px solid #332b2e',
-                transition: 'all 0.25s ease',
-              }}
-            >
-              {cat.name}
-            </button>
-          );
-        })}
       </div>
     </div>
   );
