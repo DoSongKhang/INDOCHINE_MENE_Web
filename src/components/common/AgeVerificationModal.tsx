@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAge } from '../../context/AgeContext';
 import { Button } from './Button';
-
+import anh2_1 from "../../assets/images/wines/anh2_1.png"
 interface AgeVerificationModalProps {
   onNavigate?: (path: string) => void;
 }
@@ -64,7 +64,7 @@ export const AgeVerificationModal: React.FC<AgeVerificationModalProps> = ({ onNa
             }}
           >
             <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.8rem', color: '#ffffff', fontWeight: 'bold' }}>
-              IM
+              <img src={anh2_1} alt="logo" />
             </span>
           </div>
           <h2 style={{ fontSize: '2rem', color: '#ffffff', marginBottom: '6px', fontFamily: 'var(--font-serif)', letterSpacing: '2px' }}>
