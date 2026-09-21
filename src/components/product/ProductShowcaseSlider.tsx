@@ -17,10 +17,23 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAdded, setIsAdded] = useState(false);
   const [animKey, setAnimKey] = useState(0);
+  const [direction, setDirection] = useState<'next' | 'prev'>('next');
   const { addToCart } = useCart();
 
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
+  const activeThumbnailRef = useRef<HTMLButtonElement | null>(null);
+
+  // Auto-scroll active thumbnail into view smoothly
+  useEffect(() => {
+    if (activeThumbnailRef.current) {
+      activeThumbnailRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
+    }
+  }, [currentIndex]);
 
   // Keep currentIndex valid when product list changes (e.g. filter)
   useEffect(() => {
@@ -31,17 +44,21 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
 
   const goToNext = () => {
     if (products.length === 0) return;
+    setDirection('next');
     setCurrentIndex((prev) => (prev + 1) % products.length);
     setAnimKey((prev) => prev + 1);
   };
 
   const goToPrev = () => {
     if (products.length === 0) return;
+    setDirection('prev');
     setCurrentIndex((prev) => (prev - 1 + products.length) % products.length);
     setAnimKey((prev) => prev + 1);
   };
 
   const goToIndex = (index: number) => {
+    if (index === currentIndex) return;
+    setDirection(index > currentIndex ? 'next' : 'prev');
     setCurrentIndex(index);
     setAnimKey((prev) => prev + 1);
   };
@@ -118,12 +135,14 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
 
   return (
     <div
+      key={`container-${animKey}`}
+      className="showcase-container-pulse"
       style={{
         position: "relative",
         backgroundColor: "#0a0a0a",
         border: "1px solid #262626",
-        borderRadius: "24px",
-        padding: "28px 32px",
+        borderRadius: "20px",
+        padding: "18px 24px",
         boxShadow: "0 20px 60px rgba(0, 0, 0, 0.7)",
         overflow: "hidden",
       }}
@@ -137,8 +156,8 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
           position: "absolute",
           top: "-15%",
           left: "10%",
-          width: "500px",
-          height: "500px",
+          width: "450px",
+          height: "450px",
           background:
             "radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0) 70%)",
           pointerEvents: "none",
@@ -153,8 +172,8 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
           alignItems: "center",
           justifyContent: "space-between",
           borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-          paddingBottom: "12px",
-          marginBottom: "24px",
+          paddingBottom: "10px",
+          marginBottom: "14px",
           position: "relative",
           zIndex: 2,
         }}
@@ -166,9 +185,9 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
       <div
         style={{
           position: "relative",
-          padding: "0 46px",
-          marginBottom: "28px",
-          height: "460px",
+          padding: "0 40px",
+          marginBottom: "16px",
+          height: "385px",
         }}
       >
         {/* Side Navigation Arrow: Previous (Cố định ở tâm khung trình chiếu) */}
@@ -182,8 +201,8 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
             top: "50%",
             transform: "translateY(-50%)",
             zIndex: 30,
-            width: "42px",
-            height: "42px",
+            width: "36px",
+            height: "36px",
             borderRadius: "50%",
             backgroundColor: "rgba(255, 255, 255, 0.08)",
             backdropFilter: "blur(8px)",
@@ -210,8 +229,8 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
           }}
         >
           <svg
-            width="20"
-            height="20"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -232,8 +251,8 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
             top: "50%",
             transform: "translateY(-50%)",
             zIndex: 30,
-            width: "42px",
-            height: "42px",
+            width: "36px",
+            height: "36px",
             borderRadius: "50%",
             backgroundColor: "rgba(255, 255, 255, 0.08)",
             backdropFilter: "blur(8px)",
@@ -260,8 +279,8 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
           }}
         >
           <svg
-            width="20"
-            height="20"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -274,7 +293,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
         {/* Main Slide Presentation Stage (Cố định chiều cao tuyệt đối 100% = 460px) */}
         <div
           key={animKey}
-          className="showcase-transition"
+          className={direction === "next" ? "showcase-transition-next" : "showcase-transition-prev"}
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1.15fr",
@@ -305,13 +324,13 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
             <img
               src={currentProduct.image}
               alt={currentProduct.name}
+              className="showcase-image-anim"
               style={{
-                // width: '100%',
                 height: "100%",
                 objectFit: "cover",
                 objectPosition: "center",
                 filter: "brightness(0.92)",
-                transition: "transform 0.5s ease",
+                transition: "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
               onMouseEnter={(e) =>
                 (e.currentTarget.style.transform = "scale(1.05)")
@@ -350,10 +369,11 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
             >
               {/* Category & Origin Line */}
               <div
+                className="showcase-detail-stagger-1"
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "10px",
+                  gap: "8px",
                   flexWrap: "wrap",
                 }}
               >
@@ -361,31 +381,31 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                   style={{
                     color: "#ffffff",
                     backgroundColor: "#1f1f1f",
-                    padding: "3px 8px",
+                    padding: "2px 7px",
                     borderRadius: "4px",
-                    fontSize: "0.72rem",
+                    fontSize: "0.68rem",
                     fontWeight: 700,
-                    letterSpacing: "1.5px",
+                    letterSpacing: "1.2px",
                     textTransform: "uppercase",
                   }}
                 >
                   {currentProduct.categoryName}
                 </span>
-                <span style={{ color: "#777777", fontSize: "0.75rem" }}>•</span>
-                <span style={{ color: "#bbbbbb", fontSize: "0.8rem" }}>
+                <span style={{ color: "#777777", fontSize: "0.7rem" }}>•</span>
+                <span style={{ color: "#bbbbbb", fontSize: "0.76rem" }}>
                   {currentProduct.origin}
                 </span>
               </div>
 
               {/* Title & Subtitle */}
-              <div>
+              <div className="showcase-detail-stagger-2">
                 <h2
                   style={{
                     fontFamily: "var(--font-serif)",
-                    fontSize: "1.75rem",
-                    lineHeight: 1.15,
+                    fontSize: "1.45rem",
+                    lineHeight: 1.18,
                     color: "#ffffff",
-                    marginBottom: "3px",
+                    marginBottom: "2px",
                     display: "-webkit-box",
                     WebkitLineClamp: 2,
                     WebkitBoxOrient: "vertical",
@@ -397,7 +417,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                 <p
                   style={{
                     color: "#9e9e9e",
-                    fontSize: "0.85rem",
+                    fontSize: "0.8rem",
                     fontStyle: "italic",
                     whiteSpace: "nowrap",
                     overflow: "hidden",
@@ -410,13 +430,14 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
 
               {/* Rating */}
               <div
+                className="showcase-detail-stagger-3"
                 style={{ display: "flex", alignItems: "center", gap: "6px" }}
               >
                 <div
                   style={{
                     color: "#ffffff",
-                    fontSize: "0.82rem",
-                    letterSpacing: "1.5px",
+                    fontSize: "0.78rem",
+                    letterSpacing: "1.2px",
                   }}
                 >
                   {"★".repeat(Math.floor(currentProduct.rating))}
@@ -426,24 +447,25 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                   style={{
                     color: "#ffffff",
                     fontWeight: 600,
-                    fontSize: "0.82rem",
+                    fontSize: "0.78rem",
                   }}
                 >
                   {currentProduct.rating.toFixed(1)}
                 </span>
-                <span style={{ color: "#777777", fontSize: "0.75rem" }}>
+                <span style={{ color: "#777777", fontSize: "0.72rem" }}>
                   ({currentProduct.reviewCount} đánh giá)
                 </span>
               </div>
 
               {/* Description (giới hạn 2 dòng để không làm nhảy bố cục) */}
               <p
+                className="showcase-detail-stagger-3"
                 style={{
                   color: "#cccccc",
-                  fontSize: "0.84rem",
-                  lineHeight: 1.45,
+                  fontSize: "0.8rem",
+                  lineHeight: 1.4,
                   borderLeft: "2px solid #ffffff",
-                  paddingLeft: "10px",
+                  paddingLeft: "8px",
                   display: "-webkit-box",
 
                   WebkitBoxOrient: "vertical",
@@ -456,7 +478,8 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
 
             {/* Middle Group: Specs & Tasting Notes */}
             <div
-              style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+              className="showcase-detail-stagger-4"
+              style={{ display: "flex", flexDirection: "column", gap: "6px" }}
             >
               {/* Technical Specs Pill Badges (4 cột đồng nhất) */}
               <div
@@ -468,8 +491,8 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                     style={{
                       color: "#ffffff",
                       fontWeight: 600,
-                      fontSize: "0.78rem",
-                      marginTop: "2px",
+                      fontSize: "0.75rem",
+                      marginTop: "1px",
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
@@ -484,8 +507,8 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                     style={{
                       color: "#ffffff",
                       fontWeight: 600,
-                      fontSize: "0.78rem",
-                      marginTop: "2px",
+                      fontSize: "0.75rem",
+                      marginTop: "1px",
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
@@ -500,8 +523,8 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                     style={{
                       color: "#ffffff",
                       fontWeight: 600,
-                      fontSize: "0.78rem",
-                      marginTop: "2px",
+                      fontSize: "0.75rem",
+                      marginTop: "1px",
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
@@ -516,8 +539,8 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                     style={{
                       color: "#ffffff",
                       fontWeight: 600,
-                      fontSize: "0.78rem",
-                      marginTop: "2px",
+                      fontSize: "0.75rem",
+                      marginTop: "1px",
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
@@ -534,7 +557,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    gap: "4px",
+                    gap: "3px",
                   }}
                 >
 
@@ -542,8 +565,8 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                     style={{
                       display: "flex",
                       flexWrap: "wrap",
-                      gap: "6px",
-                      maxHeight: "30px",
+                      gap: "5px",
+                      maxHeight: "26px",
                       overflow: "hidden",
                     }}
                   >
@@ -556,12 +579,13 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
 
             {/* Bottom Group: Pricing Box & Action Buttons */}
             <div
+              className="showcase-detail-stagger-5"
               style={{
-                paddingTop: "10px",
+                paddingTop: "8px",
                 borderTop: "1px solid rgba(255, 255, 255, 0.1)",
                 display: "flex",
                 flexDirection: "column",
-                gap: "8px",
+                gap: "6px",
               }}
             >
               {/* Price Line */}
@@ -571,7 +595,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                 <span
                   style={{
                     color: "#ffffff",
-                    fontSize: "1.7rem",
+                    fontSize: "1.45rem",
                     fontWeight: 700,
                     fontFamily: "var(--font-sans)",
                     letterSpacing: "0.5px",
@@ -583,7 +607,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                   <span
                     style={{
                       color: "#666666",
-                      fontSize: "0.9rem",
+                      fontSize: "0.85rem",
                       textDecoration: "line-through",
                     }}
                   >
@@ -594,7 +618,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                   <span
                     style={{
                       color: "#4ade80",
-                      fontSize: "0.78rem",
+                      fontSize: "0.74rem",
                       fontWeight: 600,
                       marginLeft: "auto",
                     }}
@@ -605,7 +629,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                   <span
                     style={{
                       color: "#ef4444",
-                      fontSize: "0.78rem",
+                      fontSize: "0.74rem",
                       fontWeight: 600,
                       marginLeft: "auto",
                     }}
@@ -622,23 +646,14 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                   size="md"
                   onClick={() => handleAddToCart(currentProduct)}
                   disabled={!currentProduct.inStock}
-                  className="w-full flex items-center justify-center gap-2 py-2.75 px-5 text-[0.88rem] tracking-[1px] border border-[#333] rounded-lg transition-all duration-200 hover:opacity-90 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 hover:bg-blue-300"
+                  className="w-full flex items-center justify-center gap-2 !py-[9px] !px-4 text-[0.84rem] tracking-[1px] border border-[#333] rounded-lg transition-all duration-200 hover:opacity-90 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 hover:!bg-red-800"
                   style={{
-                    // width: "100%",
-                    // display: "flex",
-                    // alignItems: "center",
-                    // justifyContent: "center",
-                    // gap: "8px",
-                    padding: "11px 20px",
-                    // fontSize: "0.88rem",
-                    // letterSpacing: "1px",
-                    // border: "1px solid #333",
-                    // borderRadius: "12px",
+                    padding: "9px 16px",
                   }}
                 >
                   <svg
-                    width="18"
-                    height="18"
+                    width="16"
+                    height="16"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -660,7 +675,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
       <div
         style={{
           borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-          paddingTop: "20px",
+          paddingTop: "12px",
           position: "relative",
           zIndex: 2,
         }}
@@ -670,21 +685,21 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            marginBottom: "12px",
+            marginBottom: "8px",
           }}
         >
           <span
             style={{
-              fontSize: "0.78rem",
+              fontSize: "0.74rem",
               color: "#888888",
-              letterSpacing: "1.5px",
+              letterSpacing: "1.2px",
               textTransform: "uppercase",
               fontWeight: 600,
             }}
           >
             CHỌN NHANH KIỆT TÁC TRONG BỘ SƯU TẬP:
           </span>
-          <span style={{ fontSize: "0.75rem", color: "#555555" }}>
+          <span style={{ fontSize: "0.72rem", color: "#555555" }}>
             Dùng chuột click hoặc phím mũi tên ← →
           </span>
         </div>
@@ -693,9 +708,9 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
         <div
           style={{
             display: "flex",
-            gap: "14px",
+            gap: "10px",
             overflowX: "auto",
-            paddingBottom: "8px",
+            paddingBottom: "6px",
             scrollbarWidth: "thin",
           }}
         >
@@ -704,21 +719,23 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
             return (
               <button
                 key={item.id}
+                ref={isActive ? activeThumbnailRef : null}
                 onClick={() => goToIndex(idx)}
                 style={{
-                  flex: "0 0 160px",
+                  flex: "0 0 145px",
                   backgroundColor: isActive ? "#1e1e1e" : "#121212",
                   border: isActive ? "2px solid #ffffff" : "1px solid #262626",
-                  borderRadius: "12px",
-                  padding: "10px",
+                  borderRadius: "10px",
+                  padding: "7px 9px",
                   display: "flex",
                   alignItems: "center",
-                  gap: "10px",
+                  gap: "8px",
                   cursor: "pointer",
                   textAlign: "left",
-                  transition: "all 0.25s ease",
+                  transition: "all 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
+                  transform: isActive ? "scale(1.02)" : "scale(1)",
                   boxShadow: isActive
-                    ? "0 0 16px rgba(255, 255, 255, 0.25)"
+                    ? "0 4px 16px rgba(255, 255, 255, 0.2)"
                     : "none",
                 }}
                 onMouseEnter={(e) => {
@@ -733,14 +750,14 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                 {/* Mini Image */}
                 <div
                   style={{
-                    width: "38px",
-                    height: "50px",
+                    width: "30px",
+                    height: "42px",
                     flexShrink: 0,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     backgroundColor: "#0a0a0a",
-                    borderRadius: "6px",
+                    borderRadius: "5px",
                     overflow: "hidden",
                   }}
                 >
@@ -760,7 +777,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                   <div
                     style={{
                       color: isActive ? "#ffffff" : "#aaaaaa",
-                      fontSize: "0.78rem",
+                      fontSize: "0.74rem",
                       fontWeight: isActive ? 700 : 500,
                       whiteSpace: "nowrap",
                       overflow: "hidden",
@@ -772,8 +789,8 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                   <div
                     style={{
                       color: isActive ? "#ffffff" : "#666666",
-                      fontSize: "0.72rem",
-                      marginTop: "2px",
+                      fontSize: "0.7rem",
+                      marginTop: "1px",
                       fontWeight: 600,
                     }}
                   >

@@ -7,6 +7,7 @@ import { ProductGrid } from '../components/product/ProductGrid';
 import { ProductShowcaseSlider } from '../components/product/ProductShowcaseSlider';
 import { Modal } from '../components/common/Modal';
 import { ProductDetails } from '../components/product/ProductDetails';
+import { LuSparkles, LuLayoutGrid } from 'react-icons/lu';
 
 interface ProductsPageProps {
   currentPath?: string;
@@ -110,8 +111,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ currentPath }) => {
                   color: viewMode === 'showcase' ? '#000000' : '#888888',
                   boxShadow: viewMode === 'showcase' ? '0 2px 8px rgba(0,0,0,0.4)' : 'none',
                 }}
-              >
-                <span>✦</span> Trình Diễn (Showcase)
+              > <span><LuSparkles /></span>
+                Trình Diễn (Showcase)
               </button>
 
               <button
@@ -131,7 +132,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ currentPath }) => {
                   boxShadow: viewMode === 'grid' ? '0 2px 8px rgba(0,0,0,0.4)' : 'none',
                 }}
               >
-                <span>☵</span> Dạng Lưới (Grid)
+                <span><LuLayoutGrid /></span> Dạng Lưới (Grid)
               </button>
             </div>
           </div>
