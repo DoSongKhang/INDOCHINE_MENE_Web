@@ -31,7 +31,6 @@ export interface WineItem {
 }
 
 export interface WineFilter {
-  category: WineCategory | 'all';
   searchQuery: string;
   minPrice: number;
   maxPrice: number;

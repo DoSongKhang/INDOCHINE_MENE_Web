@@ -39,8 +39,8 @@ export function App() {
     if (pathOnly === '/' || pathOnly === '') {
       return <HomePage onNavigate={navigate} />;
     }
-    if (pathOnly === '/products') {
-      return <ProductsPage />;
+    if (pathOnly === '/products' || pathOnly === '/giftset' || pathOnly === '/giftsets') {
+      return <ProductsPage currentPath={currentPath} />;
     }
     if (pathOnly.startsWith('/product/')) {
       const productId = pathOnly.replace('/product/', '');
