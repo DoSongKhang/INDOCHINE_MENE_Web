@@ -473,42 +473,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                               "linear-gradient(to top, rgba(20, 18, 20, 0.95) 0%, transparent 55%)",
                           }}
                         />
-                        {/* Badges */}
-                        <div
-                          style={{
-                            position: "absolute",
-                            top: "14px",
-                            left: "14px",
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "6px",
-                            zIndex: 5,
-                          }}
-                        >
-                          {product.isLimited && (
-                            <Badge type="limited">BẢN GIỚI HẠN</Badge>
-                          )}
-                          {product.isHot && <Badge type="hot">HOT TẾT</Badge>}
-                          {product.isNew && (
-                            <Badge type="new">MỚI RA MẮT</Badge>
-                          )}
-                        </div>
-                        {/* ABV tag */}
-                        <span
-                          style={{
-                            position: "absolute",
-                            bottom: "12px",
-                            right: "12px",
-                            fontSize: "0.72rem",
-                            color: "#d4af37",
-                            backgroundColor: "rgba(13,11,12,0.85)",
-                            padding: "4px 10px",
-                            borderRadius: "6px",
-                            border: "1px solid rgba(212,175,55,0.25)",
-                          }}
-                        >
-                          {product.abv} • {product.volume}
-                        </span>
                       </div>
 
                       {/* Content */}

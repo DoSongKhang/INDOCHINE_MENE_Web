@@ -76,12 +76,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
             textAlign: 'center',
           }}
         >
-          <h2 style={{ fontSize: '2.2rem', color: '#ffffff', marginBottom: '16px', fontFamily: 'var(--font-serif)' }}>
-            TRẢI NGHIỆM HƯƠNG VỊ INDOCHINE MÈNE THƯỢNG HẠNG
-          </h2>
-          <Button variant="gold" size="lg" onClick={() => onNavigate && onNavigate('/products')}>
-            KHÁM PHÁ CỬA HÀNG INDOCHINE MÈNE
-          </Button>
         </div>
       </div>
     </div>
