@@ -28,21 +28,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }
       className="gold-border-glow"
     >
       {/* Badges Overlay */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '14px',
-          left: '14px',
-          zIndex: 10,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '6px',
-        }}
-      >
-        {product.isLimited && <Badge type="limited">BẢN GIỚI HẠN</Badge>}
-        {product.isHot && <Badge type="hot">HOT TẾT</Badge>}
-        {product.isNew && <Badge type="new">MỚI RA MẮT</Badge>}
-      </div>
 
       {/* Wine Bottle Image Box */}
       <div

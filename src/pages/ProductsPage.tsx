@@ -81,13 +81,11 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ currentPath }) => {
           }}
         >
           <div style={{ color: '#aaaaaa', fontSize: '0.9rem' }}>
-            Hiển thị <strong style={{ color: '#ffffff' }}>{filteredWines.length}</strong> sản phẩm tinh tuyển
+            <strong style={{ color: '#ffffff' }}>{filteredWines.length}</strong> sản phẩm tinh tuyển
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ color: '#777777', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
-              Chế độ xem:
-            </span>
+
             <div
               style={{
                 display: 'inline-flex',
