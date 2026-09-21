@@ -21,14 +21,18 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
   const activeThumbnailRef = useRef<HTMLButtonElement | null>(null);
+  const thumbnailContainerRef = useRef<HTMLDivElement | null>(null);
 
-  // Auto-scroll active thumbnail into view smoothly
+  // Auto-scroll active thumbnail inside container smoothly without shifting window/page
   useEffect(() => {
-    if (activeThumbnailRef.current) {
-      activeThumbnailRef.current.scrollIntoView({
+    if (activeThumbnailRef.current && thumbnailContainerRef.current) {
+      const container = thumbnailContainerRef.current;
+      const activeEl = activeThumbnailRef.current;
+      const targetLeft =
+        activeEl.offsetLeft - (container.clientWidth - activeEl.clientWidth) / 2;
+      container.scrollTo({
+        left: Math.max(0, targetLeft),
         behavior: 'smooth',
-        block: 'nearest',
-        inline: 'center',
       });
     }
   }, [currentIndex]);
@@ -382,6 +386,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
               {/* Title & Subtitle */}
               <div className="showcase-detail-stagger-2">
                 <h2
+                  className="showcase-product-title"
                   style={{
                     fontFamily: "var(--font-serif)",
                     fontSize: "1.45rem",
@@ -548,9 +553,11 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
             >
               {/* Price Line */}
               <div
+                className="showcase-price-row"
                 style={{ display: "flex", alignItems: "baseline", gap: "10px" }}
               >
                 <span
+                  className="showcase-price-main"
                   style={{
                     color: "#ffffff",
                     fontSize: "1.45rem",
@@ -647,6 +654,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
           }}
         >
           <span
+            className="showcase-thumbs-title"
             style={{
               fontSize: "0.74rem",
               color: "#888888",
@@ -664,6 +672,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
 
         {/* Scrollable Thumbnails Container */}
         <div
+          ref={thumbnailContainerRef}
           style={{
             display: "flex",
             gap: "10px",

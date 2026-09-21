@@ -9,6 +9,26 @@ interface AboutPageProps {
 export const AboutPage: React.FC<AboutPageProps> = () => {
   return (
     <div style={{ backgroundColor: '#050505', minHeight: '80vh', padding: '60px 24px' }}>
+      <style>{`
+        .about-story-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 48px;
+          align-items: center;
+          margin-bottom: 80px;
+        }
+        @media (min-width: 768px) {
+          .about-story-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+          .about-story-reverse .about-story-text {
+            order: 2;
+          }
+          .about-story-reverse .about-story-img {
+            order: 1;
+          }
+        }
+      `}</style>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         {/* Header Title */}
         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
@@ -22,7 +42,7 @@ export const AboutPage: React.FC<AboutPageProps> = () => {
         </div>
 
         {/* Story Section 1 */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px', alignItems: 'center', marginBottom: '80px' }}>
+        <div className="about-story-grid">
           <div>
             <h2 style={{ color: '#ffffff', fontSize: '2rem', marginBottom: '16px', fontFamily: 'var(--font-serif)' }}>
               SỰ RA ĐỜI CỦA INDOCHINE MÈNE NƠI HAI “MEN” GẶP NHAU
@@ -42,8 +62,8 @@ export const AboutPage: React.FC<AboutPageProps> = () => {
         </div>
 
         {/* Story Section 2 */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px', alignItems: 'center', marginBottom: '80px' }}>
-          <div style={{ order: 2 }}>
+        <div className="about-story-grid about-story-reverse">
+          <div className="about-story-text">
             <h2 style={{ color: '#ffffff', fontSize: '2rem', marginBottom: '16px', fontFamily: 'var(--font-serif)' }}>
               CÂU CHUYỆN ĐẰNG SAU TÊN GỌI INDOCHINE & MÈNE
             </h2>
@@ -52,7 +72,7 @@ export const AboutPage: React.FC<AboutPageProps> = () => {
             </p>
           </div>
 
-          <div style={{ order: 1, borderRadius: '16px', overflow: 'hidden', border: '1px solid #222222' }}>
+          <div className="about-story-img" style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid #ffffff', boxShadow: '0 10px 40px rgba(255, 255, 255, 0.1)' }}>
             <img
               src={p2}
               alt="Indochine Mene Heritage Art"
@@ -62,7 +82,7 @@ export const AboutPage: React.FC<AboutPageProps> = () => {
         </div>
 
         {/* Story Section 3 */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px', alignItems: 'center', marginBottom: '80px' }}>
+        <div className="about-story-grid">
           <div>
             <h2 style={{ color: '#ffffff', fontSize: '2rem', marginBottom: '16px', fontFamily: 'var(--font-serif)' }}>
               DẤU ẤN HOA SEN MỘT BIỂU TƯỢNG – MỘT BẢN SẮC
