@@ -1,5 +1,7 @@
 import React from 'react';
-
+import p1 from "../assets/images/wines/p1.jpg"
+import p2 from "../assets/images/wines/p2.jpg"
+import p3 from "../assets/images/wines/p3.jpg"
 interface AboutPageProps {
   onNavigate?: (path: string) => void;
 }
@@ -23,19 +25,16 @@ export const AboutPage: React.FC<AboutPageProps> = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px', alignItems: 'center', marginBottom: '80px' }}>
           <div>
             <h2 style={{ color: '#ffffff', fontSize: '2rem', marginBottom: '16px', fontFamily: 'var(--font-serif)' }}>
-              Di Sản Bọt Sủi Prosecco Pháp - Ý
+              SỰ RA ĐỜI CỦA INDOCHINE MÈNE NƠI HAI “MEN” GẶP NHAU
             </h2>
             <p style={{ color: '#999999', lineHeight: 1.8, marginBottom: '16px' }}>
-              Thương hiệu <strong>Indochine Mène</strong> được sinh ra từ niềm đam mê lưu giữ những bọt sủi tăm li ti tinh khiết nhất của phong cách Pháp - Ý cổ điển, mang âm hưởng nghệ thuật Indochine đỉnh cao.
-            </p>
-            <p style={{ color: '#999999', lineHeight: 1.8 }}>
-              Mỗi chùm nho Glera được tuyển chọn hoàn toàn thủ công trên những triền đồi dốc đứng ngập tràn ánh nắng Địa Trung Hải, trải qua phương pháp lên men khép kín ở nhiệt độ chuẩn xác 15°C để giữ trọn nốt hương hoa cỏ dại và trái cây tươi mát.
+              <strong>Indochine Mène</strong> bắt đầu từ mong muốn đưa những giá trị làng nghề Việt vào một sản phẩm mang hơi thở hiện đại. Ý tưởng được hình thành từ sự kết nối giữa rượu thủ công truyền thống và nghề gốm Việt Nam. Một bên là men rượu lưu giữ hương vị và kỹ nghệ của người làm nghề; một bên là men gốm lưu giữ dấu ấn của đất, lửa và bàn tay nghệ nhân. <strong>Indochine Mène</strong> kết nối hai giá trị ấy với phong cách Indochine, tạo nên những sản phẩm vừa mang bản sắc Việt, vừa có diện mạo thanh lịch và hiện đại, phù hợp cho thưởng thức, trưng bày và quà tặng.
             </p>
           </div>
 
           <div style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid #ffffff', boxShadow: '0 10px 40px rgba(255, 255, 255, 0.1)' }}>
             <img
-              src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=800&q=80"
+              src={p1}
               alt="Indochine Mene Vineyard"
               style={{ width: '100%', height: '380px', objectFit: 'cover' }}
             />
@@ -46,20 +45,37 @@ export const AboutPage: React.FC<AboutPageProps> = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px', alignItems: 'center', marginBottom: '80px' }}>
           <div style={{ order: 2 }}>
             <h2 style={{ color: '#ffffff', fontSize: '2rem', marginBottom: '16px', fontFamily: 'var(--font-serif)' }}>
-              Triết Lý Văn Hóa &amp; Nghệ Thuật Thưởng Thức
+              CÂU CHUYỆN ĐẰNG SAU TÊN GỌI INDOCHINE & MÈNE
             </h2>
             <p style={{ color: '#999999', lineHeight: 1.8, marginBottom: '16px' }}>
-              Tại Việt Nam, Indochine Mène không chỉ mang đến một loại đồ uống thượng hạng mà còn tạo dựng nghệ thuật quà tặng văn hóa Noir High Fashion. Dòng sản phẩm <strong>Heritage</strong> lấy hình ảnh hoa văn Đông Dương cổ điển làm nguồn cảm hứng cho sự thịnh vượng và quý phái.
-            </p>
-            <p style={{ color: '#999999', lineHeight: 1.8 }}>
-              Tiếng nổ vang nhẹ nhàng khi khui nắp chai Indochine Mène là âm thanh mở đầu cho những thắng lợi mới, đánh dấu khoảnh khắc kết nối tình thân và hợp tác bền chặt giữa các đối tác kinh doanh.
+              <strong>Indochine Mène</strong> lấy cảm hứng từ tên gọi Đông Dương trong tiếng Pháp và được thương hiệu sử dụng để gợi lên tinh thần giao thoa giữa thẩm mỹ Pháp và bản sắc Việt Nam. Đó cũng là ngôn ngữ thiết kế mà thương hiệu lựa chọn: cổ điển, thanh lịch nhưng được thể hiện theo cách hiện đại. <strong>Mène</strong> là tên gọi được biến tấu từ ý tưởng về chữ “men” – một từ kết nối hai giá trị cốt lõi của dự án: men rượu và men gốm. Khi kết hợp lại, <strong>Indochine Mène</strong> kể câu chuyện về một thương hiệu mang <strong>"Men Việt"</strong> bên trong và <strong>“Dáng Tây”</strong> bên ngoài – nơi giá trị truyền thống được gìn giữ nhưng được kể lại bằng một ngôn ngữ mới. <strong>INDOCHINE MÈNE — Men Việt, Dáng Tây.</strong>
             </p>
           </div>
 
           <div style={{ order: 1, borderRadius: '16px', overflow: 'hidden', border: '1px solid #222222' }}>
             <img
-              src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80"
+              src={p2}
               alt="Indochine Mene Heritage Art"
+              style={{ width: '100%', height: '380px', objectFit: 'cover' }}
+            />
+          </div>
+        </div>
+
+        {/* Story Section 3 */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px', alignItems: 'center', marginBottom: '80px' }}>
+          <div>
+            <h2 style={{ color: '#ffffff', fontSize: '2rem', marginBottom: '16px', fontFamily: 'var(--font-serif)' }}>
+              DẤU ẤN HOA SEN MỘT BIỂU TƯỢNG – MỘT BẢN SẮC
+            </h2>
+            <p style={{ color: '#999999', lineHeight: 1.8, marginBottom: '16px' }}>
+              Logo <strong>Indochine Mène</strong> được xây dựng từ hình ảnh hoa sen cách điệu, lựa chọn để tạo dấu ấn Việt Nam trong một hệ nhận diện mang phong cách <strong>Indochine.</strong> Những đường nét của hoa sen được tối giản và cân xứng, giúp biểu tượng vừa giữ được nét truyền thống vừa mang cảm giác hiện đại, cao cấp. Sắc vàng đồng tạo sự liên tưởng đến vẻ đẹp cổ điển, thủ công và sang trọng của thương hiệu.
+            </p>
+          </div>
+
+          <div style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid #ffffff', boxShadow: '0 10px 40px rgba(255, 255, 255, 0.1)' }}>
+            <img
+              src={p3}
+              alt="Indochine Mene Vineyard"
               style={{ width: '100%', height: '380px', objectFit: 'cover' }}
             />
           </div>
