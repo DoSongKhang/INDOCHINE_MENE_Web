@@ -81,7 +81,7 @@
    ========================================================================== */
 .auth-showcase-pane {
   background: linear-gradient(180deg, rgba(14, 14, 14, 0.85) 0%, rgba(8, 8, 8, 0.95) 100%),
-    url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+    url('../images/wines/anh1.jpg') center/cover no-repeat;
   border-right: 1px solid #222222;
   padding: 48px 40px;
   display: flex;

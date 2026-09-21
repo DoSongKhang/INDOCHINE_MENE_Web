@@ -14,7 +14,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           <span style={{ color: '#ffffff', fontSize: '0.85rem', letterSpacing: '3px', fontWeight: 'bold' }}>
             HÀNH TRÌNH THƯƠNG HIỆU
           </span>
-          <h1 style={{ fontSize: '3rem', color: '#ffffff', marginTop: '8px', lineHeight: 1.2, fontFamily: 'var(--font-serif)' }}>
+          <h1 style={{ fontSize: '2.8rem', color: '#ffffff', marginTop: '8px', lineHeight: 1.2, fontFamily: 'var(--font-serif)' }}>
             INDOCHINE MÈNE – TINH HOA NGHỆ THUẬT Á ÂU
           </h1>
           <div style={{ width: '80px', height: '2px', backgroundColor: '#ffffff', margin: '20px auto 0' }} />
@@ -79,9 +79,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
           <h2 style={{ fontSize: '2.2rem', color: '#ffffff', marginBottom: '16px', fontFamily: 'var(--font-serif)' }}>
             TRẢI NGHIỆM HƯƠNG VỊ INDOCHINE MÈNE THƯỢNG HẠNG
           </h2>
-          <p style={{ color: '#999999', maxWidth: '650px', margin: '0 auto 28px' }}>
-            Khám phá bộ sưu tập Prosecco, Sparkling Gold 23K và Hộp Quà Gift Set cao cấp ngay hôm nay.
-          </p>
           <Button variant="gold" size="lg" onClick={() => onNavigate && onNavigate('/products')}>
             KHÁM PHÁ CỬA HÀNG INDOCHINE MÈNE
           </Button>
