@@ -287,6 +287,18 @@ img {
   }
 }
 
+/* Mobile smooth slide entrance without horizontal offset */
+@keyframes showcaseFadeInMobile {
+  from {
+    opacity: 0.4;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* --- Class assignments --- */
 
 .showcase-transition-next {
@@ -446,26 +458,40 @@ img {
      Laptop / Desktop (> 768px) remains 100% untouched.
      ========================================================================== */
   .showcase-slider-container {
-    padding: 14px 10px !important;
+    padding: 14px 12px !important;
     border-radius: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    margin: 0 auto !important;
   }
 
   .showcase-stage-wrapper {
     height: auto !important;
     padding: 0 !important;
     margin-bottom: 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
   }
 
   .showcase-slide-grid {
     grid-template-columns: 1fr !important;
     gap: 14px !important;
     height: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .showcase-image-box {
     height: 250px !important;
     width: 100% !important;
+    max-width: 100% !important;
     border-radius: 12px !important;
+    box-sizing: border-box !important;
   }
 
   .showcase-arrow {
@@ -489,6 +515,33 @@ img {
     height: auto !important;
     gap: 10px !important;
     padding: 0 4px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .showcase-product-title {
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
+  }
+
+  .showcase-price-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: baseline !important;
+    gap: 8px !important;
+  }
+
+  .showcase-price-main {
+    font-size: 1.25rem !important;
+  }
+
+  .showcase-thumbs-title {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.6px !important;
+    white-space: normal !important;
+    word-break: break-word !important;
   }
 
   .showcase-desc {
@@ -501,6 +554,12 @@ img {
 
   .showcase-thumbs-hint {
     display: none !important;
+  }
+
+  /* Slide transition on mobile: smooth vertical fade-in without horizontal push */
+  .showcase-transition-next,
+  .showcase-transition-prev {
+    animation: showcaseFadeInMobile 0.35s ease-out forwards !important;
   }
 
   /* ProductsPage & Filter on Mobile */
