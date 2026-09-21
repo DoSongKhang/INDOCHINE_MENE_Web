@@ -41,7 +41,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
           borderBottom: '1px solid #222222',
-          padding: '12px 24px',
+          padding: '8px 24px',
         }}
       >
         <div
@@ -57,31 +57,35 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
           {/* Logo Brand */}
           <div
             onClick={() => handleNav(ROUTES.HOME)}
-            style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}
+            style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}
           >
             <div
               style={{
-                width: '90px',
-                height: '90px',
+                width: '46px',
+                height: '46px',
                 borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 background: 'rgba(8, 8, 8, 0.95)',
+                overflow: 'hidden',
+                flexShrink: 0,
               }}
             >
-              <span style={{ fontFamily: 'var(--font-serif)', color: '#ffffff', fontWeight: 'bold', fontSize: '1.1rem', letterSpacing: '1px' }}>
-                <img src={anh2} alt="logo" />
-              </span>
+              <img
+                src={anh2}
+                alt="logo"
+                style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
+              />
             </div>
             <div>
               <h1
                 style={{
                   fontFamily: 'var(--font-serif)',
-                  fontSize: '1.4rem',
-                  lineHeight: 1,
+                  fontSize: '1.2rem',
+                  lineHeight: 1.1,
                   color: '#ffffff',
-                  letterSpacing: '2px',
+                  letterSpacing: '1.8px',
                   margin: 0,
                   fontWeight: 600,
                   whiteSpace: 'nowrap',
@@ -89,7 +93,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
               >
                 INDOCHINE MÈNE
               </h1>
-              <span style={{ fontSize: '0.58rem', color: '#999999', letterSpacing: '1.5px', textTransform: 'uppercase', marginTop: '2px', display: 'block', whiteSpace: 'nowrap' }}>
+              <span style={{ fontSize: '0.52rem', color: '#999999', letterSpacing: '1.4px', textTransform: 'uppercase', marginTop: '2px', display: 'block', whiteSpace: 'nowrap' }}>
                 PROSECCO &amp; FINE WINES
               </span>
             </div>
