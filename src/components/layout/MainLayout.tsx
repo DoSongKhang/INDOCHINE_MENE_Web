@@ -24,7 +24,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, onNavigate, cu
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: '#0d0b0c' }}>
-      <AgeVerificationModal />
+      <AgeVerificationModal onNavigate={onNavigate} />
       <Header onNavigate={onNavigate} currentPath={currentPath} />
       <main style={{ flex: 1 }}>{children}</main>
       <CartDrawer onCheckoutClick={handleProceedToCheckout} />

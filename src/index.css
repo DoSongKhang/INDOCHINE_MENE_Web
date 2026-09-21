@@ -1,24 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
 
 :root {
   /* INDOCHINE MÈNE - High Contrast Vintage Noir & White Palette */
-  --color-primary: #ffffff;        /* Pure High Contrast White */
-  --color-primary-dark: #121212;   /* Deep Charcoal Black */
-  --color-primary-light: #e5e5e5;  /* Soft Warm Off-White */
+  --color-primary: #ffffff;
+  /* Pure High Contrast White */
+  --color-primary-dark: #121212;
+  /* Deep Charcoal Black */
+  --color-primary-light: #e5e5e5;
+  /* Soft Warm Off-White */
 
-  --color-accent: #ffffff;         /* Crisp White Accent */
-  --color-accent-light: #f5f5f5;   /* Pearl Light */
-  --color-accent-hover: #d4d4d4;   /* Cool Gray Hover */
+  --color-accent: #ffffff;
+  /* Crisp White Accent */
+  --color-accent-light: #f5f5f5;
+  /* Pearl Light */
+  --color-accent-hover: #d4d4d4;
+  /* Cool Gray Hover */
 
-  --color-bg-main: #050505;        /* Deepest Noir Black */
-  --color-bg-card: #121212;        /* High Contrast Charcoal Card */
-  --color-bg-surface: #1a1a1a;     /* Surface Dark Gray */
+  --color-bg-main: #050505;
+  /* Deepest Noir Black */
+  --color-bg-card: #121212;
+  /* High Contrast Charcoal Card */
+  --color-bg-surface: #1a1a1a;
+  /* Surface Dark Gray */
 
-  --color-text-main: #ffffff;      /* Pristine White */
-  --color-text-muted: #9e9e9e;     /* High Fashion Muted Gray */
-  --color-text-gold: #ffffff;      /* High Contrast White Heading */
-  
-  --color-border: #262626;         /* Subtle Dark Noir Border */
+  --color-text-main: #ffffff;
+  /* Pristine White */
+  --color-text-muted: #9e9e9e;
+  /* High Fashion Muted Gray */
+  --color-text-gold: #ffffff;
+  /* High Contrast White Heading */
+
+  --color-border: #262626;
+  /* Subtle Dark Noir Border */
   --color-border-gold: rgba(255, 255, 255, 0.25);
 
   /* Typography - French Vintage Luxury */
@@ -55,7 +69,12 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-serif);
   font-weight: 600;
   color: var(--color-text-gold);
@@ -76,7 +95,8 @@ button {
   transition: var(--transition-default);
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -90,13 +110,16 @@ img {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: #0d0b0c;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #332b2e;
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-accent);
 }
@@ -109,19 +132,39 @@ img {
 
 /* Utility Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes pulseGold {
-  0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
-  70% { box-shadow: 0 0 0 12px rgba(212, 175, 55, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 12px rgba(212, 175, 55, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+  }
 }
 
 @keyframes slideRight {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 .animate-fade-in {
