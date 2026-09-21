@@ -70,8 +70,9 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onNavigate }) => {
 
   if (completedOrder) {
     return (
-      <div style={{ backgroundColor: '#0d0b0c', minHeight: '80vh', padding: '80px 24px' }}>
+      <div className="checkout-success-wrapper" style={{ backgroundColor: '#0d0b0c', minHeight: '80vh', padding: '80px 24px' }}>
         <div
+          className="checkout-success-card"
           style={{
             maxWidth: '680px',
             margin: '0 auto',
@@ -160,8 +161,8 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onNavigate }) => {
 
   if (cart.length === 0) {
     return (
-      <div style={{ backgroundColor: '#050505', minHeight: '75vh', padding: '80px 24px', textAlign: 'center' }}>
-        <div style={{ maxWidth: '500px', margin: '0 auto', backgroundColor: '#121212', padding: '40px', borderRadius: '16px', border: '1px solid #222222' }}>
+      <div className="checkout-empty-wrapper" style={{ backgroundColor: '#050505', minHeight: '75vh', padding: '80px 24px', textAlign: 'center' }}>
+        <div className="checkout-empty-card" style={{ maxWidth: '500px', margin: '0 auto', backgroundColor: '#121212', padding: '40px', borderRadius: '16px', border: '1px solid #222222' }}>
           <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🛍️</div>
           <h2 style={{ color: '#ffffff', marginBottom: '12px', fontFamily: 'var(--font-serif)' }}>Giỏ Hàng Của Bạn Đang Trống</h2>
           <p style={{ color: '#999999', marginBottom: '24px' }}>
@@ -176,15 +177,15 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onNavigate }) => {
   }
 
   return (
-    <div style={{ backgroundColor: '#050505', minHeight: '80vh', padding: '60px 24px' }}>
+    <div className="checkout-page-wrapper" style={{ backgroundColor: '#050505', minHeight: '80vh', padding: '60px 24px' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-        <h1 style={{ fontSize: '2.2rem', color: '#ffffff', marginBottom: '36px', textAlign: 'center', fontFamily: 'var(--font-serif)' }}>
+        <h1 className="checkout-main-title" style={{ fontSize: '2.2rem', color: '#ffffff', marginBottom: '36px', textAlign: 'center', fontFamily: 'var(--font-serif)' }}>
           THANH TOÁN ĐƠN HÀNG INDOCHINE MÈNE VIP
         </h1>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '36px' }}>
+        <div className="checkout-main-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '36px' }}>
           {/* Left Form */}
-          <div style={{ flex: '1 1 500px' }}>
+          <div className="checkout-col-form" style={{ flex: '1 1 500px' }}>
             <CheckoutForm
               formData={formData}
               onChange={handleFormChange}
@@ -194,7 +195,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onNavigate }) => {
           </div>
 
           {/* Right Summary */}
-          <div style={{ flex: '1 1 350px' }}>
+          <div className="checkout-col-summary" style={{ flex: '1 1 350px' }}>
             <OrderSummary cart={cart} subtotal={totalPrice} />
           </div>
         </div>

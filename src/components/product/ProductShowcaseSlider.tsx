@@ -127,7 +127,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
   return (
     <div
       key={`container-${animKey}`}
-      className="showcase-container-pulse"
+      className="showcase-slider-container showcase-container-pulse"
       style={{
         position: "relative",
         backgroundColor: "#0a0a0a",
@@ -160,6 +160,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
 
       {/* Presentation Stage Wrapper with Dedicated Fixed Navigation Arrows */}
       <div
+        className="showcase-stage-wrapper"
         style={{
           position: "relative",
           padding: "0 40px",
@@ -172,6 +173,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
           onClick={goToPrev}
           aria-label="Sản phẩm trước"
           title="Sản phẩm trước (Phím ←)"
+          className="showcase-arrow showcase-arrow-prev"
           style={{
             position: "absolute",
             left: "0px",
@@ -222,6 +224,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
           onClick={goToNext}
           aria-label="Sản phẩm tiếp theo"
           title="Sản phẩm tiếp theo (Phím →)"
+          className="showcase-arrow showcase-arrow-next"
           style={{
             position: "absolute",
             right: "0px",
@@ -270,7 +273,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
         {/* Main Slide Presentation Stage (Cố định chiều cao tuyệt đối 100% = 460px) */}
         <div
           key={animKey}
-          className={direction === "next" ? "showcase-transition-next" : "showcase-transition-prev"}
+          className={`showcase-slide-grid ${direction === "next" ? "showcase-transition-next" : "showcase-transition-prev"}`}
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1.15fr",
@@ -281,6 +284,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
         >
           {/* Left Column: Hero Showcase Box (Đồng nhất 100% chiều cao và tỷ lệ cho mọi ảnh) */}
           <div
+            className="showcase-image-box"
             style={{
               position: "relative",
               backgroundColor: "#121212",
@@ -332,6 +336,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
 
           {/* Right Column: Sommelier Story, Specs & Order */}
           <div
+            className="showcase-details-box"
             style={{
               display: "flex",
               flexDirection: "column",
@@ -435,7 +440,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
 
               {/* Description (giới hạn 2 dòng để không làm nhảy bố cục) */}
               <p
-                className="showcase-detail-stagger-3"
+                className="showcase-detail-stagger-3 showcase-desc"
                 style={{
                   color: "#cccccc",
                   fontSize: "0.8rem",
@@ -652,7 +657,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
           >
             CHỌN NHANH KIỆT TÁC TRONG BỘ SƯU TẬP:
           </span>
-          <span style={{ fontSize: "0.72rem", color: "#555555" }}>
+          <span className="showcase-thumbs-hint" style={{ fontSize: "0.72rem", color: "#555555" }}>
             Dùng chuột click hoặc phím mũi tên ← →
           </span>
         </div>

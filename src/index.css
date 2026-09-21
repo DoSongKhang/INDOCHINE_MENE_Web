@@ -57,6 +57,9 @@
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -66,6 +69,8 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
 }
 
@@ -128,6 +133,9 @@ img {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Utility Animations */
@@ -204,9 +212,11 @@ img {
     opacity: 0;
     transform: translate3d(60px, 0, 0) scale(0.97);
   }
+
   50% {
     opacity: 0.7;
   }
+
   100% {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
@@ -218,9 +228,11 @@ img {
     opacity: 0;
     transform: translate3d(-60px, 0, 0) scale(0.97);
   }
+
   50% {
     opacity: 0.7;
   }
+
   100% {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
@@ -234,10 +246,12 @@ img {
     transform: scale(1.08);
     filter: blur(8px) brightness(0.6);
   }
+
   40% {
     opacity: 0.85;
     filter: blur(3px) brightness(0.8);
   }
+
   100% {
     opacity: 1;
     transform: scale(1);
@@ -251,6 +265,7 @@ img {
     opacity: 0;
     transform: translate3d(0, 14px, 0);
   }
+
   100% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
@@ -262,9 +277,11 @@ img {
   0% {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
   }
+
   40% {
     box-shadow: 0 24px 80px rgba(255, 255, 255, 0.04), 0 20px 60px rgba(0, 0, 0, 0.8);
   }
+
   100% {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
   }
@@ -297,21 +314,25 @@ img {
   opacity: 0;
   will-change: transform, opacity;
 }
+
 .showcase-detail-stagger-2 {
   animation: showcaseDetailFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.14s forwards;
   opacity: 0;
   will-change: transform, opacity;
 }
+
 .showcase-detail-stagger-3 {
   animation: showcaseDetailFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.20s forwards;
   opacity: 0;
   will-change: transform, opacity;
 }
+
 .showcase-detail-stagger-4 {
   animation: showcaseDetailFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.26s forwards;
   opacity: 0;
   will-change: transform, opacity;
 }
+
 .showcase-detail-stagger-5 {
   animation: showcaseDetailFadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.32s forwards;
   opacity: 0;
@@ -328,5 +349,271 @@ img {
 /* Container pulse on slide change */
 .showcase-container-pulse {
   animation: showcaseContainerPulse 0.8s ease-out forwards;
+}
+
+/* ==========================================================================
+   CHECKOUT PAGE - MOBILE ONLY RESPONSIVE OVERRIDES (≤ 768px)
+   Laptop / Desktop (> 768px) remains 100% untouched.
+   ========================================================================== */
+@media (max-width: 768px) {
+  .checkout-page-wrapper {
+    padding: 24px 14px !important;
+  }
+
+  .checkout-main-title {
+    font-size: 1.4rem !important;
+    margin-bottom: 20px !important;
+    line-height: 1.3 !important;
+  }
+
+  .checkout-main-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .checkout-col-form,
+  .checkout-col-summary {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .checkout-card {
+    padding: 16px 14px !important;
+    border-radius: 14px !important;
+  }
+
+  .checkout-inputs-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .checkout-payment-label {
+    padding: 12px 14px !important;
+  }
+
+  .checkout-summary-card {
+    position: static !important;
+    top: auto !important;
+  }
+
+  .checkout-success-wrapper {
+    padding: 32px 14px !important;
+  }
+
+  .checkout-success-card {
+    padding: 24px 16px !important;
+    border-radius: 16px !important;
+  }
+
+  .checkout-empty-wrapper {
+    padding: 40px 16px !important;
+  }
+
+  .checkout-empty-card {
+    padding: 24px 16px !important;
+    border-radius: 14px !important;
+  }
+
+  /* Footer Mobile Overrides */
+  .footer-newsletter-bar {
+    padding: 24px 16px !important;
+  }
+
+  .footer-newsletter-title {
+    font-size: 1.15rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .footer-newsletter-form {
+    min-width: 0 !important;
+    width: 100% !important;
+    flex: 1 1 100% !important;
+    flex-direction: column !important;
+  }
+
+  .footer-main-links {
+    padding: 32px 16px !important;
+  }
+
+  .footer-grid-container {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  /* ==========================================================================
+     PRODUCT SHOWCASE SLIDER - MOBILE ONLY RESPONSIVE (≤ 768px)
+     Laptop / Desktop (> 768px) remains 100% untouched.
+     ========================================================================== */
+  .showcase-slider-container {
+    padding: 14px 10px !important;
+    border-radius: 16px !important;
+  }
+
+  .showcase-stage-wrapper {
+    height: auto !important;
+    padding: 0 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .showcase-slide-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    height: auto !important;
+  }
+
+  .showcase-image-box {
+    height: 250px !important;
+    width: 100% !important;
+    border-radius: 12px !important;
+  }
+
+  .showcase-arrow {
+    top: 125px !important;
+    width: 34px !important;
+    height: 34px !important;
+    z-index: 20 !important;
+    background-color: rgba(10, 10, 10, 0.75) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+  }
+
+  .showcase-arrow-prev {
+    left: 8px !important;
+  }
+
+  .showcase-arrow-next {
+    right: 8px !important;
+  }
+
+  .showcase-details-box {
+    height: auto !important;
+    gap: 10px !important;
+    padding: 0 4px !important;
+  }
+
+  .showcase-desc {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    font-size: 0.78rem !important;
+  }
+
+  .showcase-thumbs-hint {
+    display: none !important;
+  }
+
+  /* ProductsPage & Filter on Mobile */
+  .products-page-wrapper {
+    padding: 24px 12px !important;
+  }
+
+  .products-page-title {
+    font-size: 1.55rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .products-page-subtitle {
+    font-size: 0.72rem !important;
+    letter-spacing: 1.5px !important;
+  }
+
+  .products-viewmode-bar {
+    padding: 10px 14px !important;
+    gap: 10px !important;
+  }
+
+  .product-filter-container {
+    padding: 14px 12px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .product-filter-search {
+    max-width: 100% !important;
+    flex: 1 1 100% !important;
+  }
+
+  .product-filter-sort {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+
+  /* ==========================================================================
+     HERO VIDEO SECTION - MOBILE ONLY RESPONSIVE (≤ 768px)
+     Laptop / Desktop (> 768px) remains 100% untouched.
+     ========================================================================== */
+  .hero-video-section {
+    min-height: 35vh !important;
+    max-height: 310px !important;
+    padding: 12px 0 !important;
+  }
+
+  .hero-content-box {
+    padding: 14px 12px !important;
+  }
+
+  .hero-subtitle-badge {
+    font-size: 0.6rem !important;
+    letter-spacing: 1.2px !important;
+    padding: 3px 10px !important;
+    margin-bottom: 6px !important;
+    border-radius: 14px !important;
+  }
+
+  .hero-main-title {
+    font-size: 1.35rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .hero-desc-text {
+    font-size: 0.75rem !important;
+    line-height: 1.4 !important;
+    margin: 0 auto !important;
+    max-width: 90% !important;
+  }
+
+  /* ==========================================================================
+     HERITAGE SPOTLIGHT & COMPACT ORDER BUTTON - MOBILE ONLY (≤ 768px)
+     ========================================================================== */
+  .heritage-spotlight-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+
+  .heritage-spotlight-visual {
+    order: 1 !important;
+    width: 100% !important;
+  }
+
+  .heritage-spotlight-text {
+    order: 2 !important;
+    width: 100% !important;
+  }
+
+  .heritage-spotlight-img {
+    height: 330px !important;
+  }
+
+  .heritage-price-row {
+    gap: 12px !important;
+    align-items: center !important;
+  }
+
+  .heritage-price-main {
+    font-size: 1.35rem !important;
+  }
+
+  .heritage-order-btn {
+    padding: 8px 14px !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    white-space: nowrap !important;
+    border-radius: 6px !important;
+    line-height: 1.2 !important;
+    height: auto !important;
+  }
 }
 
