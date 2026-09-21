@@ -94,8 +94,8 @@ export const Footer: React.FC = () => {
               Thương hiệu Prosecco &amp; Rượu vang cao cấp Pháp - Ý. Mang âm hưởng nghệ thuật Indochine cổ điển kết hợp tinh hoa bọt sủi thượng hạng.
             </p>
             <div style={{ color: '#ffffff', fontSize: '0.85rem' }}>
-              <p>Hotline Đặt Hàng: <strong>1900 888 999</strong></p>
-              <p>Email: <strong>vip@indochinemene.vn</strong></p>
+              <p>Hotline Đặt Hàng: <strong>0392006741</strong></p>
+              <p>Email: <strong>khangdo.09102006@gmail.com</strong></p>
             </div>
           </div>
 
@@ -162,7 +162,7 @@ export const Footer: React.FC = () => {
             color: '#666666',
           }}
         >
-          <p>© 2026 INDOCHINE MÈNE VIỆT NAM. Bản quyền thuộc về Công ty Cổ phần Rượu Vang Indochine Mène.</p>
+          <p>© 2026 Đỗ Song Khang và NH</p>
           <p>French Vintage High Fashion E-Commerce</p>
         </div>
       </div>

@@ -1,6 +1,8 @@
 import { useState, useEffect, type FormEvent } from 'react';
 import '../assets/css/AuthPage.css';
-import anh2_1 from "../assets/images/wines/anh2_1.png"
+import anh2_1 from "../assets/images/wines/anh2_1.png";
+import { supabase } from '../lib/supabaseClient';
+
 interface AuthPageProps {
   onNavigate?: (path: string) => void;
 }
@@ -32,15 +34,28 @@ export default function AuthPage({ onNavigate }: AuthPageProps) {
 
   // Kiểm tra trạng thái đăng nhập khi load trang
   useEffect(() => {
-    const loggedIn = localStorage.getItem('khoi_nien_is_logged_in') === 'true';
-    if (loggedIn) {
-      setIsAlreadyLoggedIn(true);
-      setLoggedInUserEmail(localStorage.getItem('khoi_nien_user_email') || 'sommelier@indochinemene.com');
-    } else {
-      const redirectTarget = sessionStorage.getItem('redirect_after_auth');
-      if (redirectTarget === '/checkout') {
-        setRedirectNotice('Quý khách vui lòng đăng nhập tài khoản để tiến hành thanh toán đơn hàng.');
+    // 1. Kiểm tra session từ Supabase
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        setIsAlreadyLoggedIn(true);
+        setLoggedInUserEmail(session.user.email || '');
+        localStorage.setItem('khoi_nien_is_logged_in', 'true');
+        localStorage.setItem('khoi_nien_user_email', session.user.email || '');
+        if (session.user.user_metadata?.full_name) {
+          localStorage.setItem('khoi_nien_user_name', session.user.user_metadata.full_name);
+        }
+      } else {
+        const loggedIn = localStorage.getItem('khoi_nien_is_logged_in') === 'true';
+        if (loggedIn) {
+          setIsAlreadyLoggedIn(true);
+          setLoggedInUserEmail(localStorage.getItem('khoi_nien_user_email') || 'sommelier@indochinemene.com');
+        }
       }
+    });
+
+    const redirectTarget = sessionStorage.getItem('redirect_after_auth');
+    if (redirectTarget === '/checkout') {
+      setRedirectNotice('Quý khách vui lòng đăng nhập tài khoản để tiến hành thanh toán đơn hàng.');
     }
   }, []);
 
@@ -61,18 +76,25 @@ export default function AuthPage({ onNavigate }: AuthPageProps) {
   };
 
   // Xử lý đăng xuất
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    setIsLoading(true);
+    try {
+      await supabase.auth.signOut();
+    } catch (err) {
+      console.error('Lỗi đăng xuất:', err);
+    }
     localStorage.removeItem('khoi_nien_is_logged_in');
     localStorage.removeItem('khoi_nien_user_email');
     localStorage.removeItem('khoi_nien_user_name');
     setIsAlreadyLoggedIn(false);
     setEmail('');
     setPassword('');
+    setIsLoading(false);
     setSuccessMessage('Đã đăng xuất thành công.');
   };
 
   // Xử lý submit form
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setErrorMessage('');
     setSuccessMessage('');
@@ -112,16 +134,34 @@ export default function AuthPage({ onNavigate }: AuthPageProps) {
       }
     }
 
-    // Giả lập xác thực an toàn
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
 
+    try {
       if (isLogin) {
+        // ĐĂNG NHẬP VỚI SUPABASE
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: email.trim(),
+          password: password,
+        });
+
+        if (error) {
+          setIsLoading(false);
+          if (error.message.toLowerCase().includes('invalid login credentials')) {
+            setErrorMessage('Email hoặc mật khẩu không chính xác.');
+          } else if (error.message.toLowerCase().includes('email not confirmed')) {
+            setErrorMessage('Email chưa được xác nhận. Quý khách vui lòng kiểm tra hộp thư.');
+          } else {
+            setErrorMessage(`Đăng nhập không thành công: ${error.message}`);
+          }
+          return;
+        }
+
+        const user = data.user;
         localStorage.setItem('khoi_nien_is_logged_in', 'true');
-        localStorage.setItem('khoi_nien_user_email', email);
-        if (fullName) {
-          localStorage.setItem('khoi_nien_user_name', fullName);
+        localStorage.setItem('khoi_nien_user_email', user?.email || email.trim());
+        const name = user?.user_metadata?.full_name || fullName;
+        if (name) {
+          localStorage.setItem('khoi_nien_user_name', name);
         }
 
         const redirectTarget = sessionStorage.getItem('redirect_after_auth') || '/';
@@ -136,6 +176,7 @@ export default function AuthPage({ onNavigate }: AuthPageProps) {
         );
 
         setTimeout(() => {
+          setIsLoading(false);
           if (onNavigate) {
             onNavigate(redirectTarget);
           } else {
@@ -143,17 +184,54 @@ export default function AuthPage({ onNavigate }: AuthPageProps) {
           }
         }, 900);
       } else {
-        setSuccessMessage('Đăng ký hội viên thành công! Đang chuyển về màn hình đăng nhập...');
-        localStorage.setItem('khoi_nien_user_email', email);
-        if (fullName) {
-          localStorage.setItem('khoi_nien_user_name', fullName);
+        // ĐĂNG KÝ VỚI SUPABASE
+        const { data, error } = await supabase.auth.signUp({
+          email: email.trim(),
+          password: password,
+          options: {
+            data: {
+              full_name: fullName.trim(),
+            },
+          },
+        });
+
+        if (error) {
+          setIsLoading(false);
+          if (error.message.toLowerCase().includes('user already registered')) {
+            setErrorMessage('Email này đã được đăng ký tài khoản. Quý khách vui lòng chuyển sang Đăng nhập.');
+          } else {
+            setErrorMessage(`Đăng ký không thành công: ${error.message}`);
+          }
+          return;
         }
-        setTimeout(() => {
-          setIsLogin(true);
-          setSuccessMessage('Vui lòng đăng nhập với tài khoản vừa khởi tạo.');
-        }, 1200);
+
+        setIsLoading(false);
+        // Kiểm tra xem session có ngay lập tức không (nếu tắt email confirmation)
+        if (data.session) {
+          localStorage.setItem('khoi_nien_is_logged_in', 'true');
+          localStorage.setItem('khoi_nien_user_email', email.trim());
+          if (fullName.trim()) {
+            localStorage.setItem('khoi_nien_user_name', fullName.trim());
+          }
+          setSuccessMessage('Đăng ký hội viên thành công! Chào mừng quý khách đến với Indochine Mène.');
+          setTimeout(() => {
+            if (onNavigate) {
+              onNavigate('/');
+            } else {
+              window.location.hash = '/';
+            }
+          }, 1200);
+        } else {
+          setSuccessMessage('Đăng ký tài khoản thành công! Quý khách có thể đăng nhập ngay.');
+          setTimeout(() => {
+            setIsLogin(true);
+          }, 1500);
+        }
       }
-    }, 1000);
+    } catch (err: any) {
+      setIsLoading(false);
+      setErrorMessage(err?.message || 'Đã có lỗi xảy ra trong quá trình xử lý.');
+    }
   };
 
   const handleGoHome = (path: string = '/') => {
@@ -374,7 +452,7 @@ export default function AuthPage({ onNavigate }: AuthPageProps) {
                       id="fullName"
                       type="text"
                       className="auth-native-input"
-                      placeholder="Ví dụ: Hoàng Minh Triết"
+                      placeholder="Ví dụ: Đỗ Song Khang"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
                       autoComplete="name"
@@ -400,7 +478,7 @@ export default function AuthPage({ onNavigate }: AuthPageProps) {
                     id="email"
                     type="email"
                     className="auth-native-input"
-                    placeholder="sommelier@indochinemene.com"
+                    placeholder="khangdo.09102006@gmail.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     autoComplete="email"

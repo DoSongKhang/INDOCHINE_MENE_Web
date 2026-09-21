@@ -24,7 +24,7 @@ export const ProductFilter: React.FC<ProductFilterProps> = ({
         backgroundColor: '#171315',
         border: '1px solid #332b2e',
         borderRadius: '16px',
-        padding: '24px',
+        padding: '20px',
         marginBottom: '32px',
       }}
     >
@@ -35,7 +35,6 @@ export const ProductFilter: React.FC<ProductFilterProps> = ({
           gap: '20px',
           alignItems: 'center',
           justifyContent: 'space-between',
-          marginBottom: '20px',
         }}
       >
         {/* Search Bar */}
