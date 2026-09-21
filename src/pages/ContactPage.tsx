@@ -28,9 +28,6 @@ export const ContactPage: React.FC = () => {
           <h1 style={{ fontSize: '2.8rem', color: '#ffffff', marginTop: '6px', fontFamily: 'var(--font-serif)' }}>
             LIÊN HỆ THƯƠNG HIỆU INDOCHINE MÈNE
           </h1>
-          <p style={{ color: '#999999', maxWidth: '600px', margin: '12px auto 0' }}>
-            Tư vấn giải pháp hộp quà biếu doanh nghiệp VIP, khắc logo độc quyền và đăng ký trải nghiệm thử vị Prosecco tại Showroom.
-          </p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '40px' }}>
