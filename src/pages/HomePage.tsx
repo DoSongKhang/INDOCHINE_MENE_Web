@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { MOCK_WINES } from "../data/mockWines";
 import type { WineItem } from "../types/wine";
-import { Badge } from "../components/common/Badge";
 import { Modal } from "../components/common/Modal";
 import { ProductDetails } from "../components/product/ProductDetails";
 import { Button } from "../components/common/Button";
@@ -14,7 +13,7 @@ interface HomePageProps {
   onNavigate?: (path: string) => void;
 }
 
-export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
+export const HomePage: React.FC<HomePageProps> = () => {
   const { addToCart } = useCart();
   const [selectedProduct, setSelectedProduct] = useState<WineItem | null>(null);
   const [featuredIndex, setFeaturedIndex] = useState(0);

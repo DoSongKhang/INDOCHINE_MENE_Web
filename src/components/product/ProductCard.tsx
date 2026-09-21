@@ -1,7 +1,6 @@
 import React from 'react';
 import type { WineItem } from '../../types/wine';
 import { formatCurrency } from '../../utils/formatCurrency';
-import { Badge } from '../common/Badge';
 import { Button } from '../common/Button';
 import { useCart } from '../../hooks/useCart';
 
@@ -27,8 +26,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }
       }}
       className="gold-border-glow"
     >
-      {/* Badges Overlay */}
-
       {/* Wine Bottle Image Box */}
       <div
         style={{

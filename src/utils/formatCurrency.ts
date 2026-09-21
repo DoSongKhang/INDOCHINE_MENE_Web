@@ -5,7 +5,3 @@ export const formatCurrency = (amount: number): string => {
     maximumFractionDigits: 0,
   }).format(amount);
 };
-
-export const formatPriceNumber = (amount: number): string => {
-  return amount.toLocaleString('vi-VN') + ' ₫';
-};

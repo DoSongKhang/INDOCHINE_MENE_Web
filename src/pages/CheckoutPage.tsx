@@ -35,7 +35,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onNavigate }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [completedOrder, setCompletedOrder] = useState<OrderInfo | null>(null);
 
-  const handleFormChange = (field: keyof CheckoutFormData, value: any) => {
+  const handleFormChange = (field: keyof CheckoutFormData, value: string | boolean) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 

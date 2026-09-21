@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import type { WineItem } from "../../types/wine";
 import { formatCurrency } from "../../utils/formatCurrency";
-import { Badge } from "../common/Badge";
 import { Button } from "../common/Button";
 import { useCart } from "../../hooks/useCart";
 
@@ -12,7 +11,6 @@ interface ProductShowcaseSliderProps {
 
 export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
   products,
-  onQuickView,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAdded, setIsAdded] = useState(false);
@@ -125,13 +123,6 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
   }
 
   const currentProduct = products[currentIndex] || products[0];
-  const discountPercent = currentProduct.originalPrice
-    ? Math.round(
-      ((currentProduct.originalPrice - currentProduct.price) /
-        currentProduct.originalPrice) *
-      100,
-    )
-    : 0;
 
   return (
     <div
@@ -165,21 +156,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
         }}
       />
 
-      {/* Top Bar: Counter */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-          paddingBottom: "10px",
-          marginBottom: "14px",
-          position: "relative",
-          zIndex: 2,
-        }}
-      >
 
-      </div>
 
       {/* Presentation Stage Wrapper with Dedicated Fixed Navigation Arrows */}
       <div
@@ -550,30 +527,7 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                 </div>
               </div>
 
-              {/* Tasting Notes Highlights */}
-              {currentProduct.tastingNotes && (
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "3px",
-                  }}
-                >
 
-                  <div
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      gap: "5px",
-                      maxHeight: "26px",
-                      overflow: "hidden",
-                    }}
-                  >
-
-
-                  </div>
-                </div>
-              )}
             </div>
 
             {/* Bottom Group: Pricing Box & Action Buttons */}
