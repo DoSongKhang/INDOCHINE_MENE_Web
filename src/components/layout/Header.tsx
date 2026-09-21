@@ -61,8 +61,8 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
           >
             <div
               style={{
-                width: '38px',
-                height: '38px',
+                width: '90px',
+                height: '90px',
                 borderRadius: '50%',
                 display: 'flex',
                 alignItems: 'center',

@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   background-color: #060606;
-  background-image: 
+  background-image:
     radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.035) 0%, transparent 45%),
     radial-gradient(circle at 85% 85%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
     radial-gradient(circle at 50% 50%, rgba(20, 20, 20, 0.9) 0%, transparent 100%);
@@ -69,6 +69,7 @@
     opacity: 0;
     transform: translateY(24px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -80,7 +81,7 @@
    ========================================================================== */
 .auth-showcase-pane {
   background: linear-gradient(180deg, rgba(14, 14, 14, 0.85) 0%, rgba(8, 8, 8, 0.95) 100%),
-              url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+    url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
   border-right: 1px solid #222222;
   padding: 48px 40px;
   display: flex;
@@ -112,10 +113,9 @@
 }
 
 .showcase-monogram {
-  width: 44px;
-  height: 44px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  border: 1.5px solid #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -432,7 +432,7 @@
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
 }
 
-.auth-native-input:focus + .auth-input-icon,
+.auth-native-input:focus+.auth-input-icon,
 .auth-input-box:focus-within .auth-input-icon {
   color: #ffffff;
 }
@@ -802,7 +802,8 @@
   }
 
   .auth-showcase-pane {
-    display: none; /* Focus directly on the sleek form on tablet/mobile */
+    display: none;
+    /* Focus directly on the sleek form on tablet/mobile */
   }
 
   .auth-form-pane {

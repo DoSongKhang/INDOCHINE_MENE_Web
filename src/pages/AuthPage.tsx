@@ -1,6 +1,6 @@
 import { useState, useEffect, type FormEvent } from 'react';
 import '../assets/css/AuthPage.css';
-
+import anh2_1 from "../assets/images/wines/anh2_1.png"
 interface AuthPageProps {
   onNavigate?: (path: string) => void;
 }
@@ -131,8 +131,8 @@ export default function AuthPage({ onNavigate }: AuthPageProps) {
           redirectTarget === '/checkout'
             ? 'Xác thực thành công! Đang chuyển đến quy trình thanh toán VIP...'
             : redirectTarget === '/cart'
-            ? 'Đăng nhập thành công! Đang chuyển đến giỏ hàng của quý khách...'
-            : 'Đăng nhập thành công! Chào mừng quý khách quay lại Indochine Mène...'
+              ? 'Đăng nhập thành công! Đang chuyển đến giỏ hàng của quý khách...'
+              : 'Đăng nhập thành công! Chào mừng quý khách quay lại Indochine Mène...'
         );
 
         setTimeout(() => {
@@ -170,7 +170,7 @@ export default function AuthPage({ onNavigate }: AuthPageProps) {
       {isAlreadyLoggedIn ? (
         <div className="auth-vip-profile-container">
           <div className="vip-avatar-ring" aria-hidden="true">
-            IM
+            <img src={anh2_1} alt="logo" />
           </div>
           <div className="vip-badge-tag">
             <span>✦ HỘI VIÊN INDOCHINE PRIVÉ ✦</span>
@@ -220,7 +220,7 @@ export default function AuthPage({ onNavigate }: AuthPageProps) {
           <div className="auth-showcase-pane">
             <div className="showcase-header">
               <div className="showcase-brand-badge">
-                <div className="showcase-monogram">IM</div>
+                <div className="showcase-monogram"><img src={anh2_1} alt="logo" /></div>
                 <div className="showcase-title-box">
                   <h2>INDOCHINE MÈNE</h2>
                   <span>PROSECCO &amp; FINE WINES • MAISON DE LUXE</span>

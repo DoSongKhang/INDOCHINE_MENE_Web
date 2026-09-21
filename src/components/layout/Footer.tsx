@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '../common/Button';
+import anh2_1 from "../../assets/images/wines/anh2_1.png"
 
 export const Footer: React.FC = () => {
   return (
@@ -74,10 +75,9 @@ export const Footer: React.FC = () => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
               <span
                 style={{
-                  width: '38px',
-                  height: '38px',
+                  width: '60px',
+                  height: '60px',
                   borderRadius: '50%',
-                  border: '1px solid #ffffff',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -86,7 +86,7 @@ export const Footer: React.FC = () => {
                   fontFamily: 'var(--font-serif)',
                 }}
               >
-                IM
+                <img src={anh2_1} alt="logo" />
               </span>
               <h2 style={{ fontSize: '1.5rem', color: '#ffffff', letterSpacing: '2px', fontFamily: 'var(--font-serif)' }}>INDOCHINE MÈNE</h2>
             </div>
