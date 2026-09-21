@@ -49,11 +49,6 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ currentPath }) => {
           <h1 style={{ fontSize: '2.8rem', color: '#ffffff', marginTop: '6px', fontFamily: 'var(--font-serif)' }}>
             {isGiftSet ? 'BỘ SƯU TẬP HỘP QUÀ TẾT & GIFT SET CAO CẤP' : 'BỘ SƯU TẬP RƯỢU VANG & PROSECCO CAO CẤP'}
           </h1>
-          <p style={{ color: '#999999', maxWidth: '650px', margin: '12px auto 0', fontSize: '0.95rem', lineHeight: 1.6 }}>
-            {isGiftSet
-              ? 'Khám phá các bộ Hộp Quà Biếu Tết, quà tặng doanh nghiệp và đối tác VIP mang đậm dấu ấn tinh hoa bản sắc Việt kết hợp thiết kế sang trọng đẳng cấp.'
-              : 'Khám phá những dòng rượu vang và thức uống Indochine Mène thượng hạng mang đậm phong vị Á - Âu tuyển chọn.'}
-          </p>
         </div>
 
         {/* Filter Toolbar */}
