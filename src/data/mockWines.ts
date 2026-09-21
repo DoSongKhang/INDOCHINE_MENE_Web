@@ -152,7 +152,7 @@ export const MOCK_WINES: WineItem[] = [
   {
     id: 'indochine-mene-giftset-5',
     name: 'Hộp Quà Indochine Mène Phú Quý',
-    subtitle: 'Nét Đẹp Hội Tụ Đẳng Cấp Thượng Lưu Á Đông',
+    subtitle: '',
     category: 'giftset',
     categoryName: 'Bộ Sưu Tập Gift Set',
     price: 3850000,

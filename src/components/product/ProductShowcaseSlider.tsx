@@ -441,7 +441,6 @@ export const ProductShowcaseSlider: React.FC<ProductShowcaseSliderProps> = ({
                   }}
                 >
                   {"★".repeat(Math.floor(currentProduct.rating))}
-                  {currentProduct.rating % 1 !== 0 && "½"}
                 </div>
                 <span
                   style={{
