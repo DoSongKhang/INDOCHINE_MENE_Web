@@ -39,6 +39,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
     <div>
       {/* 1. HERO SLIDER BANNER */}
       <section
+        className="hero-video-section"
         style={{
           position: "relative",
           minHeight: "85vh",
@@ -57,6 +58,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
             loop
             muted
             playsInline
+            className="hero-video-bg"
             style={{
               position: "absolute",
               inset: 0,
@@ -68,6 +70,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
           />
         ) : (
           <div
+            className="hero-video-bg"
             style={{
               position: "absolute",
               inset: 0,
@@ -92,6 +95,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
 
         {/* Hero Content Box */}
         <div
+          className="hero-content-box"
           style={{
             position: "relative",
             zIndex: 10,
@@ -102,6 +106,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
           }}
         >
           <span
+            className="hero-subtitle-badge"
             style={{
               display: "inline-block",
               color: "#d4af37",
@@ -120,6 +125,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
           </span>
 
           <h1
+            className="hero-main-title"
             style={{
               fontSize: "clamp(2.2rem, 5vw, 3.8rem)",
               color: "#f5e6ab",
@@ -133,6 +139,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
           </h1>
 
           <p
+            className="hero-desc-text"
             style={{
               fontSize: "1.1rem",
               color: "rgba(255, 255, 255, 0.8)",
@@ -158,6 +165,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
       >
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
           <div
+            className="heritage-spotlight-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
@@ -166,7 +174,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
             }}
           >
             {/* Left Story Text */}
-            <div>
+            <div className="heritage-spotlight-text">
               <span
                 style={{
                   color: "#ffffff",
@@ -210,10 +218,12 @@ export const HomePage: React.FC<HomePageProps> = () => {
                 trưng bày.
               </p>
               <div
+                className="heritage-price-row"
                 style={{ display: "flex", alignItems: "center", gap: "20px" }}
               >
                 <div>
                   <div
+                    className="heritage-price-main"
                     style={{
                       fontSize: "1.8rem",
                       fontWeight: "bold",
@@ -236,7 +246,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
                   variant="gold"
                   size="lg"
                   onClick={() => addToCart(heritageWine, 1)}
-                  className="hover:!bg-yellow-300 hover:opacity-90 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50"
+                  className="heritage-order-btn hover:!bg-yellow-300 hover:opacity-90 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50"
                 >
                   ĐẶT HÀNG NGAY
                 </Button>
@@ -244,7 +254,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
             </div>
 
             {/* Right Product Card Visual */}
-            <div style={{ position: "relative" }}>
+            <div className="heritage-spotlight-visual" style={{ position: "relative" }}>
               <div
                 style={{
                   position: "relative",
@@ -257,6 +267,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
                 <img
                   src={heritageWine.image}
                   alt={heritageWine.name}
+                  className="heritage-spotlight-img"
                   style={{ width: "100%", height: "520px", objectFit: "cover" }}
                 />
                 <div

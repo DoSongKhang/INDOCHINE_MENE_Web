@@ -34,7 +34,7 @@ export const OrderSummary: React.FC<OrderSummaryProps> = ({
 
   return (
     <div
-      className="bg-[#171315] border border-[#332b2e] rounded-2xl p-6 sticky top-25"
+      className="checkout-card checkout-summary-card bg-[#171315] border border-[#332b2e] rounded-2xl p-6 sticky top-25"
       style={{
         padding: "24px",
       }}

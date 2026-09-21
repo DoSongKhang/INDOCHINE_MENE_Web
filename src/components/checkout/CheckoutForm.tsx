@@ -2,6 +2,7 @@ import React from "react";
 import type { CheckoutFormData, PaymentMethod } from "../../types/order";
 import { Input } from "../common/Input";
 import { Button } from "../common/Button";
+import { FaUser } from "react-icons/fa";
 
 interface CheckoutFormProps {
   formData: CheckoutFormData;
@@ -19,11 +20,12 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
   return (
     <form
       onSubmit={onSubmit}
+      className="checkout-form-container"
       style={{ display: "flex", flexDirection: "column", gap: "24px" }}
     >
       {/* Contact Info Box */}
       <div
-        className="bg-[#171315] border border-[#332b2e] rounded-2xl p-6"
+        className="checkout-card bg-[#171315] border border-[#332b2e] rounded-2xl p-6"
         style={{
           padding: "24px",
         }}
@@ -34,10 +36,10 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
             marginBottom: "20px",
           }}
         >
-          <span>👤</span> THÔNG TIN GIAO HÀNG VIP
+          <span><FaUser /></span> THÔNG TIN GIAO HÀNG VIP
         </h3>
 
-        <div className="grid grid-cols-[repeat(auto-fit, minmax(220px, 1fr))] gap-4">
+        <div className="checkout-inputs-grid grid grid-cols-[repeat(auto-fit, minmax(220px, 1fr))] gap-4">
           <Input
             label="Họ và Tên người nhận *"
             placeholder="Ví dụ: Đỗ Song Khang"
@@ -66,7 +68,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         </div>
 
         <div
-          className="mt-4 grid grid-cols-[repeat(auto-fit, minmax(220px, 1fr))] gap-4"
+          className="checkout-inputs-grid mt-4 grid grid-cols-[repeat(auto-fit, minmax(220px, 1fr))] gap-4"
           style={{
             marginTop: "16px",
           }}
@@ -99,7 +101,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
 
       {/* Payment Method Selector */}
       <div
-        className="bg-[#171315] border border-[#332b2e] rounded-2xl p-6"
+        className="checkout-card bg-[#171315] border border-[#332b2e] rounded-2xl p-6"
         style={{
           padding: "24px",
         }}
@@ -116,7 +118,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
         <div className="flex flex-col gap-3">
           {/* COD Option */}
           <label
-            className="flex items-center gap-3.5 p-4 rounded-[10px] cursor-pointer"
+            className="checkout-payment-label flex items-center gap-3.5 p-4 rounded-[10px] cursor-pointer"
             style={{
               padding: "16px",
               backgroundColor:
@@ -147,7 +149,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
 
           {/* Bank Transfer QR Option */}
           <label
-            className="flex items-center gap-3.5 p-4 rounded-[10px] cursor-pointer"
+            className="checkout-payment-label flex items-center gap-3.5 p-4 rounded-[10px] cursor-pointer"
             style={{
               padding: "16px",
               backgroundColor:
@@ -180,7 +182,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({
 
           {/* VNPay Option */}
           <label
-            className="flex items-center gap-3.5 p-4 rounded-[10px] cursor-pointer"
+            className="checkout-payment-label flex items-center gap-3.5 p-4 rounded-[10px] cursor-pointer"
             style={{
               padding: "16px",
               backgroundColor:

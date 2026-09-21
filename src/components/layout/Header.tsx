@@ -36,6 +36,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
     <header style={{ position: 'sticky', top: 0, zIndex: 1000, width: '100%' }}>
       {/* Main Glass Header */}
       <div
+        className="main-header-bar"
         style={{
           backgroundColor: 'rgba(8, 8, 8, 0.95)',
           backdropFilter: 'blur(16px)',
@@ -56,10 +57,12 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
         >
           {/* Logo Brand */}
           <div
+            className="header-logo-container"
             onClick={() => handleNav(ROUTES.HOME)}
             style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}
           >
             <div
+              className="header-logo-badge"
               style={{
                 width: '46px',
                 height: '46px',
@@ -80,6 +83,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
             </div>
             <div>
               <h1
+                className="header-logo-title"
                 style={{
                   fontFamily: 'var(--font-serif)',
                   fontSize: '1.2rem',
@@ -93,7 +97,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
               >
                 INDOCHINE MÈNE
               </h1>
-              <span style={{ fontSize: '0.52rem', color: '#999999', letterSpacing: '1.4px', textTransform: 'uppercase', marginTop: '2px', display: 'block', whiteSpace: 'nowrap' }}>
+              <span className="header-logo-sub" style={{ fontSize: '0.52rem', color: '#999999', letterSpacing: '1.4px', textTransform: 'uppercase', marginTop: '2px', display: 'block', whiteSpace: 'nowrap' }}>
                 PROSECCO &amp; FINE WINES
               </span>
             </div>
@@ -151,9 +155,10 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
           </nav>
 
           {/* Right Action Icons */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
+          <div className="header-actions-container" style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
             {/* Cart Icon */}
             <button
+              className="header-btn-cart"
               onClick={openCart}
               style={{
                 position: 'relative',
@@ -175,11 +180,11 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
               <span className="text-[1.1rem] flex items-center text-white">
                 <FaShoppingCart />
               </span>
-              <span>Giỏ Hàng</span>
+              <span className="header-btn-label">Giỏ Hàng</span>
               <span
                 style={{
-                  backgroundColor: '#ffffff',
-                  color: '#050505',
+                  backgroundColor: '#770000',
+                  color: '#ffffff',
                   borderRadius: '50%',
                   width: '18px',
                   height: '18px',
@@ -196,6 +201,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
 
             {/* Auth / Account Button */}
             <button
+              className="header-btn-auth"
               onClick={() => handleNav(ROUTES.AUTH)}
               style={{
                 display: 'inline-flex',
@@ -216,7 +222,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
               <span className="text-[0.9rem] flex items-center text-white">
                 <FaUser />
               </span>
-              <span>Tài Khoản</span>
+              <span className="header-btn-label">Tài Khoản</span>
             </button>
 
             {/* Mobile Hamburger Menu button */}
@@ -266,6 +272,23 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
                 {item.label}
               </span>
             ))}
+            <span
+              onClick={() => handleNav(ROUTES.AUTH)}
+              style={{
+                color: currentPath === ROUTES.AUTH ? '#ffffff' : '#d4af37',
+                fontSize: '0.95rem',
+                fontWeight: 600,
+                letterSpacing: '1.5px',
+                padding: '8px 12px',
+                borderRadius: '6px',
+                backgroundColor: currentPath === ROUTES.AUTH ? 'rgba(212, 175, 55, 0.2)' : 'transparent',
+                cursor: 'pointer',
+                borderTop: '1px solid #222222',
+                paddingTop: '12px',
+              }}
+            >
+              👤 TÀI KHOẢN / ĐĂNG NHẬP
+            </span>
           </div>
         )}
       </div>
@@ -274,6 +297,50 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, currentPath = '/' })
         @media (max-width: 1080px) {
           .hide-mobile { display: none !important; }
           .show-mobile-btn { display: block !important; }
+        }
+
+        @media (max-width: 768px) {
+          .main-header-bar {
+            padding: 8px 12px !important;
+          }
+
+          .header-logo-container {
+            gap: 8px !important;
+            min-width: 0 !important;
+            flex-shrink: 1 !important;
+          }
+
+          .header-logo-badge {
+            width: 36px !important;
+            height: 36px !important;
+          }
+
+          .header-logo-title {
+            font-size: 0.95rem !important;
+            letter-spacing: 1px !important;
+          }
+
+          .header-logo-sub {
+            display: none !important;
+          }
+
+          .header-actions-container {
+            gap: 8px !important;
+            flex-shrink: 0 !important;
+          }
+
+          .header-btn-label {
+            display: none !important;
+          }
+
+          .header-btn-cart {
+            padding: 6px 10px !important;
+            gap: 4px !important;
+          }
+
+          .header-btn-auth {
+            padding: 6px 10px !important;
+          }
         }
       `}</style>
     </header>

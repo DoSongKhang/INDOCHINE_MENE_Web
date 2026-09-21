@@ -20,6 +20,7 @@ export const ProductFilter: React.FC<ProductFilterProps> = ({
 }) => {
   return (
     <div
+      className="product-filter-container"
       style={{
         backgroundColor: '#171315',
         border: '1px solid #332b2e',
@@ -38,7 +39,7 @@ export const ProductFilter: React.FC<ProductFilterProps> = ({
         }}
       >
         {/* Search Bar */}
-        <div style={{ position: 'relative', flex: '1 1 300px', maxWidth: '450px' }}>
+        <div className="product-filter-search" style={{ position: 'relative', flex: '1 1 300px', maxWidth: '450px' }}>
           <FaSearch
             style={{
               position: 'absolute',
@@ -84,7 +85,7 @@ export const ProductFilter: React.FC<ProductFilterProps> = ({
         </div>
 
         {/* Sort & Count */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div className="product-filter-sort" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <span style={{ fontSize: '0.85rem', color: '#a39c97' }}>
             Hiển thị <strong>{totalCount}</strong> sản phẩm
           </span>

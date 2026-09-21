@@ -809,15 +809,48 @@
   .auth-form-pane {
     padding: 36px 24px;
   }
+
+  .auth-vip-profile-container {
+    padding: 36px 24px;
+    max-width: 520px;
+  }
 }
 
 @media (max-width: 480px) {
   .auth-page-wrapper {
-    padding: 24px 12px;
+    padding: 20px 12px;
   }
 
   .auth-form-pane {
-    padding: 28px 18px;
+    padding: 24px 16px;
+  }
+
+  .auth-title {
+    font-size: 1.55rem;
+  }
+
+  .auth-nav-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .auth-mode-tabs {
+    width: 100%;
+    display: flex;
+  }
+
+  .auth-tab-item {
+    flex: 1;
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 0.75rem;
+  }
+
+  .btn-demo-quick {
+    width: 100%;
+    justify-content: center;
+    padding: 8px 12px;
   }
 
   .auth-social-row {
@@ -826,5 +859,26 @@
 
   .vip-perks-grid {
     grid-template-columns: 1fr;
+  }
+
+  .auth-vip-profile-container {
+    padding: 24px 16px;
+    border-radius: 16px;
+  }
+
+  .vip-avatar-ring {
+    width: 64px;
+    height: 64px;
+    font-size: 1.4rem;
+    margin-bottom: 14px;
+  }
+
+  .vip-profile-title {
+    font-size: 1.55rem;
+  }
+
+  .vip-profile-email {
+    font-size: 0.85rem;
+    margin-bottom: 20px;
   }
 }

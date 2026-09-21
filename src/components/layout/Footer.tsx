@@ -15,6 +15,7 @@ export const Footer: React.FC = () => {
     >
       {/* VIP Newsletter Bar */}
       <div
+        className="footer-newsletter-bar"
         style={{
           backgroundColor: '#121212',
           borderBottom: '1px solid #222222',
@@ -22,6 +23,7 @@ export const Footer: React.FC = () => {
         }}
       >
         <div
+          className="footer-newsletter-inner"
           style={{
             maxWidth: '1280px',
             margin: '0 auto',
@@ -33,14 +35,14 @@ export const Footer: React.FC = () => {
           }}
         >
           <div>
-            <h3 style={{ fontSize: '1.4rem', color: '#ffffff', marginBottom: '6px', fontFamily: 'var(--font-serif)', letterSpacing: '1px' }}>
+            <h3 className="footer-newsletter-title" style={{ fontSize: '1.4rem', color: '#ffffff', marginBottom: '6px', fontFamily: 'var(--font-serif)', letterSpacing: '1px' }}>
               ĐĂNG KÝ NHẬN ĐẶC QUYỀN VIP INDOCHINE MÈNE
             </h3>
             <p style={{ color: '#999999', fontSize: '0.9rem' }}>
               Nhận thông báo bộ sưu tập Giới Hạn và thư mời tham dự các buổi VIP Wine Tasting riêng tư.
             </p>
           </div>
-          <div style={{ display: 'flex', gap: '12px', minWidth: '320px', flex: '1 1 350px', maxWidth: '500px' }}>
+          <div className="footer-newsletter-form" style={{ display: 'flex', gap: '12px', minWidth: '320px', flex: '1 1 350px', maxWidth: '500px' }}>
             <input
               type="email"
               placeholder="Nhập địa chỉ email của bạn..."
@@ -62,8 +64,9 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Main Footer Links */}
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '60px 24px' }}>
+      <div className="footer-main-links" style={{ maxWidth: '1280px', margin: '0 auto', padding: '60px 24px' }}>
         <div
+          className="footer-grid-container"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',

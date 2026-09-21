@@ -39,14 +39,14 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ currentPath }) => {
   const [viewMode, setViewMode] = useState<'showcase' | 'grid'>('showcase');
 
   return (
-    <div style={{ backgroundColor: '#050505', minHeight: '80vh', padding: '60px 24px' }}>
+    <div className="products-page-wrapper" style={{ backgroundColor: '#050505', minHeight: '80vh', padding: '60px 24px' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         {/* Page Header Title */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <span style={{ color: '#ffffff', fontSize: '0.85rem', letterSpacing: '2px', fontWeight: 'bold' }}>
+          <span className="products-page-subtitle" style={{ color: '#ffffff', fontSize: '0.85rem', letterSpacing: '2px', fontWeight: 'bold' }}>
             {isGiftSet ? 'INDOCHINE MÈNE LUXURY GIFT SET COLLECTION' : 'INDOCHINE MÈNE PROSECCO & FINE WINES'}
           </span>
-          <h1 style={{ fontSize: '2.8rem', color: '#ffffff', marginTop: '6px', fontFamily: 'var(--font-serif)' }}>
+          <h1 className="products-page-title" style={{ fontSize: '2.8rem', color: '#ffffff', marginTop: '6px', fontFamily: 'var(--font-serif)' }}>
             {isGiftSet ? 'BỘ SƯU TẬP HỘP QUÀ TẾT & GIFT SET CAO CẤP' : 'BỘ SƯU TẬP RƯỢU VANG & PROSECCO CAO CẤP'}
           </h1>
         </div>
@@ -62,6 +62,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ currentPath }) => {
 
         {/* View Mode Toggle Switcher */}
         <div
+          className="products-viewmode-bar"
           style={{
             display: 'flex',
             alignItems: 'center',
