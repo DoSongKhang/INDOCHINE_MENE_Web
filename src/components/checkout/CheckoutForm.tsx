@@ -5,7 +5,7 @@ import { Button } from "../common/Button";
 
 interface CheckoutFormProps {
   formData: CheckoutFormData;
-  onChange: (field: keyof CheckoutFormData, value: any) => void;
+  onChange: (field: keyof CheckoutFormData, value: string | boolean) => void;
   onSubmit: (e: React.FormEvent) => void;
   isSubmitting?: boolean;
 }

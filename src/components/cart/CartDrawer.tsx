@@ -3,8 +3,7 @@ import { useCart } from "../../hooks/useCart";
 import { CartItem } from "./CartItem";
 import { formatCurrency } from "../../utils/formatCurrency";
 import { Button } from "../common/Button";
-import { FaShoppingCart } from "react-icons/fa";
-import { FaGift } from "react-icons/fa";
+import { FaShoppingCart, FaGift } from "react-icons/fa";
 
 interface CartDrawerProps {
   onCheckoutClick?: () => void;

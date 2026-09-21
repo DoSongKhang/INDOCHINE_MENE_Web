@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 interface AgeContextType {
   isVerified: boolean;
@@ -12,18 +12,10 @@ const AgeContext = createContext<AgeContextType | undefined>(undefined);
 const STORAGE_KEY = 'khoi_nien_age_verified_18';
 
 export const AgeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isVerified, setIsVerified] = useState<boolean>(true); // default true for initial render until check
+  const [isVerified, setIsVerified] = useState<boolean>(() => {
+    return typeof window !== 'undefined' && localStorage.getItem(STORAGE_KEY) === 'true';
+  });
   const [isUnderage, setIsUnderage] = useState<boolean>(false);
-
-  useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved === 'true') {
-      setIsVerified(true);
-      setIsUnderage(false);
-    } else {
-      setIsVerified(false);
-    }
-  }, []);
 
   const verifyAge = () => {
     localStorage.setItem(STORAGE_KEY, 'true');

@@ -1,11 +1,10 @@
 import React from 'react';
-import { Button } from '../components/common/Button';
 
 interface AboutPageProps {
   onNavigate?: (path: string) => void;
 }
 
-export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
+export const AboutPage: React.FC<AboutPageProps> = () => {
   return (
     <div style={{ backgroundColor: '#050505', minHeight: '80vh', padding: '60px 24px' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
@@ -64,18 +63,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
               style={{ width: '100%', height: '380px', objectFit: 'cover' }}
             />
           </div>
-        </div>
-
-        {/* CTA Banner */}
-        <div
-          style={{
-            backgroundColor: '#121212',
-            border: '1px solid #ffffff',
-            borderRadius: '16px',
-            padding: '48px 32px',
-            textAlign: 'center',
-          }}
-        >
         </div>
       </div>
     </div>

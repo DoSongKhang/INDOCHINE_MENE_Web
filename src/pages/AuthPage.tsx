@@ -30,7 +30,11 @@ export default function AuthPage({ onNavigate }: AuthPageProps) {
   const [successMessage, setSuccessMessage] = useState('');
 
   // Trạng thái thông báo điều hướng từ thanh toán hoặc trang khác
-  const [redirectNotice, setRedirectNotice] = useState('');
+  const [redirectNotice] = useState(() => {
+    return typeof window !== 'undefined' && sessionStorage.getItem('redirect_after_auth') === '/checkout'
+      ? 'Quý khách vui lòng đăng nhập tài khoản để tiến hành thanh toán đơn hàng.'
+      : '';
+  });
 
   // Kiểm tra trạng thái đăng nhập khi load trang
   useEffect(() => {
@@ -52,11 +56,6 @@ export default function AuthPage({ onNavigate }: AuthPageProps) {
         }
       }
     });
-
-    const redirectTarget = sessionStorage.getItem('redirect_after_auth');
-    if (redirectTarget === '/checkout') {
-      setRedirectNotice('Quý khách vui lòng đăng nhập tài khoản để tiến hành thanh toán đơn hàng.');
-    }
   }, []);
 
   // Hàm chuyển tab
@@ -228,9 +227,10 @@ export default function AuthPage({ onNavigate }: AuthPageProps) {
           }, 1500);
         }
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       setIsLoading(false);
-      setErrorMessage(err?.message || 'Đã có lỗi xảy ra trong quá trình xử lý.');
+      const errorMsg = err instanceof Error ? err.message : (err as { message?: string })?.message;
+      setErrorMessage(errorMsg || 'Đã có lỗi xảy ra trong quá trình xử lý.');
     }
   };
 
