@@ -8,7 +8,7 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
-export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, maxWidth = '650px', children }) => {
+export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, maxWidth = '880px', children }) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -24,6 +24,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, maxWidth =
 
   return (
     <div
+      className="modal-backdrop-layer"
       style={{
         position: 'fixed',
         inset: 0,
@@ -39,15 +40,17 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, maxWidth =
       onClick={onClose}
     >
       <div
+        className="modal-box-card"
         style={{
           backgroundColor: '#171315',
-          border: '1px solid rgba(212, 175, 55, 0.3)',
-          borderRadius: '16px',
+          border: '1px solid rgba(255, 255, 255, 0.16)',
+          borderRadius: '18px',
           maxWidth: maxWidth,
           width: '100%',
           maxHeight: '90vh',
           overflowY: 'auto',
-          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.9)',
+          overflowX: 'hidden',
+          boxShadow: '0 25px 80px rgba(0, 0, 0, 0.95)',
           padding: '28px',
           position: 'relative',
         }}

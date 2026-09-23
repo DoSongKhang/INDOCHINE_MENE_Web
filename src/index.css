@@ -293,6 +293,7 @@ img {
     opacity: 0.4;
     transform: translateY(6px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -675,4 +676,100 @@ img {
     height: auto !important;
   }
 }
+
+/* ==========================================================================
+   PRODUCT DETAILS MODAL - BEAUTIFIED RESPONSIVE STYLING
+   ========================================================================== */
+.product-details-action-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.product-details-stepper-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.product-details-stepper-label {
+  display: none;
+}
+
+.product-details-mobile-subtotal {
+  display: none;
+}
+
+.product-details-btn-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  /* Overlay & Modal Card */
+  .modal-backdrop-layer {
+    padding: 12px 10px !important;
+  }
+
+  .modal-box-card {
+    padding: 18px 14px 16px 14px !important;
+    border-radius: 16px !important;
+    max-height: 93vh !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Grid turns into clean vertical flow */
+  .product-details-responsive-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Image height on phone: compact so user doesn't have to scroll forever */
+  .product-detail-img-box {
+    height: 240px !important;
+    min-height: 240px !important;
+    max-height: 240px !important;
+    width: 100% !important;
+  }
+
+  /* Action row stacks into 2 spacious, touch-friendly rows */
+  .product-details-action-container {
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .product-details-stepper-row {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+
+  .product-details-stepper-label {
+    display: inline-block !important;
+    font-size: 0.8rem !important;
+    color: #a8a29e !important;
+    font-weight: 600 !important;
+  }
+
+  .product-details-mobile-subtotal {
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+  }
+
+  .product-details-btn-wrapper {
+    width: 100% !important;
+  }
+
+  .product-details-btn-wrapper button {
+    width: 100% !important;
+    font-size: 0.86rem !important;
+    height: 44px !important;
+  }
+}
+
 
