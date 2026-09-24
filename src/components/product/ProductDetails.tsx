@@ -109,26 +109,6 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onClose
               zIndex: 5,
             }}
           >
-            {product.isLimited && (
-              <span
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  backgroundColor: '#f5e6ab',
-                  color: '#1a1415',
-                  padding: '4px 10px',
-                  borderRadius: '20px',
-                  fontSize: '0.68rem',
-                  fontWeight: 800,
-                  letterSpacing: '0.8px',
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)',
-                }}
-              >
-                <LuSparkles size={12} />
-                LIMITED EDITION
-              </span>
-            )}
             {product.isHot && !product.isLimited && (
               <span
                 style={{
@@ -145,99 +125,8 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onClose
               </span>
             )}
           </div>
-
-          {/* Wishlist Button */}
-          <button
-            onClick={() => setIsLiked(!isLiked)}
-            aria-label="Yêu thích"
-            title={isLiked ? 'Đã yêu thích' : 'Lưu sản phẩm'}
-            style={{
-              position: 'absolute',
-              top: '12px',
-              right: '12px',
-              width: '32px',
-              height: '32px',
-              borderRadius: '50%',
-              backgroundColor: 'rgba(13, 11, 12, 0.75)',
-              backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
-              color: isLiked ? '#ef4444' : '#e5e5e5',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              zIndex: 5,
-              transition: 'all 0.2s ease',
-            }}
-          >
-            <LuHeart size={15} fill={isLiked ? '#ef4444' : 'none'} />
-          </button>
-
-          {/* In-Stock Indicator Pill at bottom of image */}
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '10px',
-              left: '10px',
-              right: '10px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              backgroundColor: 'rgba(13, 11, 12, 0.85)',
-              backdropFilter: 'blur(10px)',
-              padding: '6px 12px',
-              borderRadius: '8px',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              fontSize: '0.72rem',
-              color: '#cccccc',
-            }}
-          >
-            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <span
-                style={{
-                  width: '6px',
-                  height: '6px',
-                  borderRadius: '50%',
-                  backgroundColor: product.inStock ? '#22c55e' : '#ef4444',
-                  boxShadow: product.inStock ? '0 0 8px #22c55e' : 'none',
-                }}
-              />
-              <strong style={{ color: product.inStock ? '#4ade80' : '#f87171' }}>
-                {product.inStock ? 'Sẵn hàng tại hầm' : 'Tạm hết'}
-              </strong>
-            </span>
-            <span style={{ color: '#888888' }}>
-              {product.volume || 'Hộp quà cao cấp'}
-            </span>
-          </div>
         </div>
 
-        {/* 3 Quick Value Guarantees Strip */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '6px',
-            padding: '8px 10px',
-            backgroundColor: '#110e10',
-            borderRadius: '10px',
-            border: '1px solid #231f21',
-            textAlign: 'center',
-          }}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}>
-            <LuShieldCheck size={14} color="#d4af37" />
-            <span style={{ fontSize: '0.65rem', color: '#cccccc', fontWeight: 600 }}>100% Chính Hãng</span>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}>
-            <LuTruck size={14} color="#d4af37" />
-            <span style={{ fontSize: '0.65rem', color: '#cccccc', fontWeight: 600 }}>Giao Nhanh 2H</span>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}>
-            <LuGift size={14} color="#d4af37" />
-            <span style={{ fontSize: '0.65rem', color: '#cccccc', fontWeight: 600 }}>Hộp Quà & Thiệp</span>
-          </div>
-        </div>
       </div>
 
       {/* ========================================================
@@ -384,7 +273,6 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onClose
                 color: '#a8a29e',
                 lineHeight: 1.5,
                 marginBottom: '12px',
-                display: '-webkit-box',
                 WebkitLineClamp: 3,
                 WebkitBoxOrient: 'vertical',
                 overflow: 'hidden',
@@ -396,42 +284,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onClose
           )}
 
           {/* Tasting / Gift Highlights in neat flow */}
-          {highlightTags.length > 0 && (
-            <div
-              style={{
-                backgroundColor: '#0d0b0c',
-                border: '1px solid #231f21',
-                borderRadius: '8px',
-                padding: '8px 12px',
-                marginBottom: '14px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '6px',
-              }}
-            >
-              <div style={{ fontSize: '0.68rem', color: '#d4af37', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.8px' }}>
-                ✦ Điểm Nhấn Hương Vị & Trải Nghiệm:
-              </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                {highlightTags.map((tag, idx) => (
-                  <span
-                    key={idx}
-                    style={{
-                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      borderRadius: '12px',
-                      padding: '3px 8px',
-                      fontSize: '0.72rem',
-                      color: '#e5e5e5',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {tag.icon} {tag.text}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
+
         </div>
 
         {/* Quantity Stepper & Add to Cart Action Bar (Pinned cleanly to bottom) */}
